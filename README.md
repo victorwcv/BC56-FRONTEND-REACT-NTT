@@ -4,7 +4,7 @@ Esta primera fase de mi proyecto **My Market**, esta enfocado en la creación de
 
 <br>
 
-<div style="text-align: center;">
+<div align= "center">
   <img src="./assets/images/market-ss.jpg" width=600 alt="Preview My Market" />
 </div>
 
