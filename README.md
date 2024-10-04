@@ -2,6 +2,13 @@
 
 Esta primera fase de mi proyecto **My Market**, esta enfocado en la creación del diseño y la estructura visual básica de la aplicación. Se utiliza **CSS** como principal herramienta para dar estilo a los elementos HTML y asegurar una experiencia visual atractiva y coherente.
 
+<br>
+
+<div style="text-align: center;">
+  <img src="./assets/images/market-ss.jpg" width=600 alt="Preview My Market" />
+</div>
+
+
 ## Objetivos de esta Fase
 
 - Crear la estructura del diseño con HTML y CSS.
