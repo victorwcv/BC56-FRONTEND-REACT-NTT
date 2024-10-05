@@ -16,7 +16,6 @@
 - [Documentación por Fase](#documentacion-por-fase)
 - [Fases del Proyecto](#fases-del-proyecto)
 - [Tecnologías Utilizadas](#tecnologías-utilizadas)
-- [Instalación](#instalación)
 - [Licencia](#licencia)
 
 <br>
@@ -53,11 +52,7 @@ El proyecto está dividido en varias fases, cada una desarrollada en una rama se
 
    - Implementación de pruebas unitarias para asegurar la calidad del código.
 
-7. **Principios SOLID y Herramientas** (`feature/solid-principles`)
-
-   - Aplicación de los principios SOLID y uso de herramientas de desarrollo modernas.
-
-8. **Proyecto Integrador** (`feature/integrative-project`)
+7. **Proyecto Integrador** (`feature/integrative-project`)
    - Integración de todas las funcionalidades para el funcionamiento completo del market, incluyendo paginación, autenticación y más.
 
 <br>
@@ -92,38 +87,6 @@ Por ejemplo, para la fase de React Fundations:
 - **Control de Versiones:** Git, GitHub
 - **Pruebas:** Jest (u otra herramienta de pruebas unitarias)
 - **Otros:** Principios SOLID, herramientas de desarrollo modernas
-
-<br>
-
-## Instalación
-
-1. **Clonar el repositorio:**
-
-   ```bash
-   git clone https://github.com/victorwcv/BC56-FRONTEND-REACT-NTT.git
-   ```
-
-2. **Navegar al directorio del proyecto:**
-
-   ```bash
-   cd  BC56-FRONTEND-REACT-NTT
-   ```
-
-3. **Instalar dependencias**
-
-   ```bash
-   npm install
-   ```
-
-4. **Iniciar el proyecto**
-
-   ```bash
-   npm run dev
-   ```
-
-5. **Abrir el Navegador en el puerto especificado**
-
-   http://localhost:5173/
 
 <br>
 
