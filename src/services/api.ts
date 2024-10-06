@@ -1,13 +1,17 @@
 // llamada a la api para obtener las categorías
 
+import { mapCategories } from "../mappers/categoryMapper";
+import { mapProducts } from "../mappers/productMapper";
+import { CategoryAPI, ProductsAPI } from "../types/apiTypes";
+
 export const getCategories = async () => {
   try {
     const res = await fetch("https://dummyjson.com/products/categories");
     if (!res.ok) {
       throw new Error(`Error: ${res.status} ${res.statusText}`);
     }
-    const data = await res.json();
-    return data;
+    const data: CategoryAPI[] = await res.json();
+    return mapCategories(data);
   } catch (error) {
     console.error("Error al obtener las categorías:", error);
   }
@@ -20,8 +24,8 @@ export const getAllProducts = async () => {
     if (!res.ok) {
       throw new Error(`Error: ${res.status} ${res.statusText}`);
     }
-    const data = await res.json();
-    return data;
+    const data: ProductsAPI = await res.json();
+    return mapProducts(data);
   } catch (error) {
     console.error("Error al obtener los productos:", error);
   }
