@@ -54,3 +54,6 @@ A continuación se detalla cada subcarpeta de `src/`.
 - `src/services/`: La lógica que interactúa con APIs se centraliza en esta carpeta.
 - `src/types/`: Aquí se definen las interfaces y tipos usados en toda la aplicación, lo que permite un tipado claro y explícito.
 - `src/utils/`: Funciones de ayuda que no están directamente ligadas a un componente específico, facilitando tareas repetitivas o comunes en el proyecto.
+- Aún se conservan las carpetas `css` y `html` de la version JavaScript, la carpeta `assets` fue reemplazada por la carpeta `public` proporcionada por **Vite**.
+
+
