@@ -1,6 +1,6 @@
 import { Product } from "../types/productTypes";
 
-export const createNewProductCard = (product : Product) => {
+export const createNewProductCard = (product: Product) => {
   // Crear el elemnto 'figure'
   const figureEl = document.createElement("figure");
   figureEl.classList.add("product");

@@ -1,3 +1,5 @@
+import { Errormessages } from "../types/errorMesages.enum";
+
 // función para cargar una sección de html e insertarla en un elemento HTML determinado por su id
 export const loadHtml = (url: string, id: string) => {
   fetch(url)
@@ -7,7 +9,7 @@ export const loadHtml = (url: string, id: string) => {
       if (element) {
         element.innerHTML = data;
       } else {
-        console.error(`Element with id '${id}' not found.`);
+        console.error(Errormessages.ELEMENT_WITH_ID_NOT_FOUND, id);
       }
     });
 };
@@ -23,7 +25,7 @@ export const renderFilteredProducts = (
 
   if (filteredProducts.length === 0) {
     const noResults = document.createElement("p");
-    noResults.textContent = "No se encontraron resultados";
+    noResults.textContent = Errormessages.ELEMENTS_NOT_FOUND;
     productsEl.replaceChildren(noResults);
   } else {
     productsEl.replaceChildren(...filteredProducts);

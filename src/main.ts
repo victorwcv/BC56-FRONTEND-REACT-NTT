@@ -1,6 +1,7 @@
 import { loadHtml, renderFilteredProducts } from "./utils/utils";
 import { createNewProductCard } from "./components/productCard";
 import { getCategories, getAllProducts } from "./services/api";
+import { Errormessages } from "./types/errorMesages.enum";
 
 async function initApp() {
   // cargar secciones principales al index.html desde la carpeta 'html'
@@ -26,7 +27,7 @@ async function initApp() {
 
   // mostrar un mensaje de carga
   const loadingMessage = document.createElement("p");
-  loadingMessage.textContent = "Cargando productos...";
+  loadingMessage.textContent = Errormessages.LOAD_MESSAGE;
   productsEl?.appendChild(loadingMessage);
 
   // obtener todos los productos desde la api
