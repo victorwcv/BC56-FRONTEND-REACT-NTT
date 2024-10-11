@@ -1,12 +1,14 @@
-export const createNewProductCard = (product) => {
+import { Product } from "../types/productTypes";
+
+export const createNewProductCard = (product: Product) => {
   // Crear el elemnto 'figure'
   const figureEl = document.createElement("figure");
   figureEl.classList.add("product");
-  figureEl.id = product.id;
+  figureEl.id = product.id.toString();
 
   // Crear el elemento 'img' para la imagen
   const img = document.createElement("img");
-  img.src = product.thumbnail || "../assets/images/no-image-placeholder.jpg";
+  img.src = product.image || "/images/no-image-placeholder.jpg";
   img.alt = product.title;
   img.classList.add("product__image");
   img.id = `product-image-${product.id}`;
@@ -50,7 +52,7 @@ export const createNewProductCard = (product) => {
   // Crear el 'span' para el precio dinámico
   const priceSpan = document.createElement("span");
   priceSpan.id = `product-price-${product.id}`;
-  priceSpan.textContent = product.price;
+  priceSpan.textContent = product.price.toString();
 
   // Añadir el 'span' al 'h3'
   price.appendChild(priceSpan);
