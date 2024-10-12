@@ -1,0 +1,21 @@
+.market {
+  margin-top: 4rem;
+  flex: 1;
+  padding: 1rem;
+}
+
+
+
+/* Products Section */
+
+.products {
+  max-width: 1200px;
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+

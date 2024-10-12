@@ -1,0 +1,29 @@
+.search {
+  min-height: 2rem;
+  padding-block: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.search__input,
+.search__select {
+  width: auto;
+  height: 100%;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+/* media queries */
+
+@media (max-width: 480px) {
+  .search__input,
+  .search__select {
+    width: 300px;
+  }
+}

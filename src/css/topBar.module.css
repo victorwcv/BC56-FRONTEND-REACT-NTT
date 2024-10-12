@@ -1,0 +1,76 @@
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: var(--dark-color);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.topbar__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 2rem;
+  height: 4rem;
+}
+
+.topbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar__logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.topbar__logo h1 {
+  color: var(--light-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.topbar__cart {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--light-color);
+}
+
+.topbar__cart svg {
+  width: 40px;
+  height: 40px;
+  color: var(--light-color);
+}
+
+.topbar__cart__count {
+  position: absolute;
+  top: 0px;
+  right: -5px;
+  height: 1.2rem;
+  min-width: 1.2rem;
+  background-color: var(--danger-color);
+  font-size: 0.7rem;
+  line-height: 1.2rem;
+  border-radius: 50%;
+  text-align: center;
+}
+
+/* media queries */
+
+@media (max-width: 768px) {
+  .topbar__container {
+    padding-inline: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar__logo h1 {
+    font-size: 1.2rem;
+  }
+}

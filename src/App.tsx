@@ -1,11 +1,16 @@
+import Footer from "./components/Footer";
+import TopBar from "./components/TopBar";
+import Market from "./pages/market/Market";
 
 function App() {
 
   return (
     <>
-      <h1>Hello World</h1>
+      <TopBar />
+      <Market />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
