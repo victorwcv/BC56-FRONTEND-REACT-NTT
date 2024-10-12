@@ -1,95 +1,50 @@
-# My Market
+# React + TypeScript + Vite
 
-<br>
-<!-- ![My Market Banner](ruta/a/tu/banner.png) -->
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Descripción
+Currently, two official plugins are available:
 
-**My Market** es una plataforma de comercio electrónico desarrollada como proyecto final del bootcamp REACT. Este proyecto implementa un carrito de compras completo, con funcionalidades avanzadas como paginación y autenticación, evolucionando desde **Vanilla JavaScript** hasta **React con TypeScript**. El desarrollo se divide en varias fases, cada una gestionada en una rama específica del repositorio.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-<br>
+## Expanding the ESLint configuration
 
-## Tabla de Contenidos
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- [Descripción](#descripción)
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Documentación por Fase](#documentacion-por-fase)
-- [Fases del Proyecto](#fases-del-proyecto)
-- [Tecnologías Utilizadas](#tecnologías-utilizadas)
-- [Licencia](#licencia)
+- Configure the top-level `parserOptions` property like this:
 
-<br>
-
-## Estructura del Proyecto
-
-El proyecto está dividido en varias fases, cada una desarrollada en una rama separada para mantener un flujo de trabajo organizado y facilitar el seguimiento del progreso.
-
-<br>
-  
-## Fases del Proyecto
-
-1. **Diseño y Estilos** (`feature/design-and-styles`)
-
-   - Creación del diseño inicial y estilos básicos utilizando CSS.
-
-2. **JavaScript** (`feature/javascript`)
-
-   - Implementación de funcionalidades básicas con Vanilla JavaScript.
-
-3. **TypeScript** (`feature/typescript`)
-
-   - Migración del código JavaScript a TypeScript para mejorar la tipificación y la mantenibilidad.
-
-4. **React Fundamentos** (`feature/react-foundations`)
-
-   - Introducción a React y creación de componentes básicos.
-
-5. **React Implementación** (`feature/react-implementation`)
-
-   - Desarrollo avanzado con React, integración de estados y props.
-
-6. **Pruebas Unitarias** (`feature/unit-tests`)
-
-   - Implementación de pruebas unitarias para asegurar la calidad del código.
-
-7. **Proyecto Integrador** (`feature/integrative-project`)
-   - Integración de todas las funcionalidades para el funcionamiento completo del market, incluyendo paginación, autenticación y más.
-
-<br>
-
-## Documentacion por Fase
-
-Cada fase del proyecto tiene su propio archivo `README.md`, ubicado en la rama correspondiente. Este archivo documenta:
-
-- Las decisiones técnicas tomadas durante esa fase.
-- Los problemas enfrentados y cómo se resolvieron.
-- Instrucciones específicas para probar o entender esa etapa del desarrollo.
-
-Puedes acceder a la documentación detallada de cada fase cambiando de rama:
-
-```bash
-  git checkout feature/nombre-de-la-rama
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-Por ejemplo, para la fase de React Fundations:
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-```bash
-  git checkout feature/react-foundations
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
+
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
 ```
-
-<br>
-
-## Tecnologías Utilizadas
-
-- **Lenguajes:** JavaScript, TypeScript
-- **Librerías y Frameworks:** React
-- **Herramientas de Estilo:** CSS
-- **Control de Versiones:** Git, GitHub
-- **Pruebas:** Jest (u otra herramienta de pruebas unitarias)
-- **Otros:** Principios SOLID, herramientas de desarrollo modernas
-
-<br>
-
-## Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT. Para más detalles, consulta el archivo [LICENSE](./LICENSE).
