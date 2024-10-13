@@ -1,6 +1,6 @@
+import { useAppContext } from "../../../context/AppContext";
 import { type Product } from "../../../types/interfaces/product.interface";
 import styles from "../css/productCard.module.css";
-import { useAppContext } from "../../../context/AppContext";
 
 interface ProductCardProps {
   product: Product;

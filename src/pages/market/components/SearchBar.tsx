@@ -58,13 +58,17 @@ function SearchBar({ products, setmessage }: SearchBarProps) {
         placeholder="Buscar productos..."
         className={styles.search__input}
         aria-label="Buscar productos"
+        value={searchByTerm}
         onChange={(e) => setSearchByTerm(e.target.value)}
+        onFocus={() => setSearchByCategory("")}
       />
       <select
         id="search-select"
         className={styles.search__select}
         aria-label="Categorias"
+        value={searchByCategory}
         onChange={(e) => setSearchByCategory(e.target.value)}
+        onFocus={() => setSearchByTerm("")}
       >
         <option value="" className={styles.search__option}>
           Todas las categorías

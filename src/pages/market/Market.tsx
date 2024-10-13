@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import SearchBar from "./components/SearchBar";
 import styles from "./market.module.css";
+import { useEffect, useRef, useState } from "react";
 import { useAppContext } from "../../context/AppContext";
 import { getAllProducts } from "../../services/apiCalls";
 import ProductCard from "./components/ProductCard";
+import SearchBar from "./components/SearchBar";
 import { Product } from "../../types/interfaces/product.interface";
 import { CommonMessages } from "../../types/enums/commonMessages.enum";
 
