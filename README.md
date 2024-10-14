@@ -1,69 +1,132 @@
-# Fase 4: React Fundamentos
+# My Market
 
-Esta fase esta enfocada en integrar React para construir la interfaz de usuario. React nos permite crear componentes reutilizables y gestionar el estado de manera eficiente. El proyecto sigue utilizando TypeScript para un desarrollo más robusto y seguro.
+<br>
+<!-- ![My Market Banner](ruta/a/tu/banner.png) -->
 
-## Cambios Realizados
+## Descripción
 
-- **Integración de React**: He migrado la interfaz de usuario a React, aprovechando su capacidad para crear componentes modulares y gestionar el estado de la aplicación de manera más eficiente.
+**My Market** es una plataforma de comercio electrónico desarrollada como proyecto final del bootcamp REACT. Este proyecto implementa un carrito de compras completo, con funcionalidades avanzadas como paginación y autenticación, evolucionando desde **Vanilla JavaScript** hasta **React con TypeScript**. El desarrollo se divide en varias fases, cada una gestionada en una rama específica del repositorio.
 
-- **Componentes Reutilizables**: Todos los componentes visuales han sido refactorizados como componentes funcionales de React, utilizando TypeScript para definir las props y el estado de cada componente de manera clara y explícita.
+<br>
 
-- **CSS Modules para Estilos**: Los estilos de los componentes se manejan mediante **CSS Modules**, lo que asegura que los estilos sean locales a cada componente. Esto evita conflictos de nombres de clases a nivel global y facilita el mantenimiento y escalabilidad del proyecto.
+## Tabla de Contenidos
 
-- **Estado Global**: Utilizamos el contexto de React y hooks como `useState` y `useEffect` para manejar el estado global de la aplicación de manera eficiente, asegurando que los datos se actualicen correctamente en toda la interfaz de usuario.
+- [Descripción](#descripción)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Documentación por Fase](#documentacion-por-fase)
+- [Fases del Proyecto](#fases-del-proyecto)
+- [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Instalación](#instalación)
+- [Licencia](#licencia)
 
-## Probar proyecto localmente
+<br>
 
-Requisito : Tener instalado Node.js v20 LTS
+## Estructura del Proyecto
 
-1. **Clonar el repositorio**:
+El proyecto está dividido en varias fases, cada una desarrollada en una rama separada para mantener un flujo de trabajo organizado y facilitar el seguimiento del progreso.
+
+<br>
+  
+## Fases del Proyecto
+
+1. **Diseño y Estilos** (`feature/design-and-styles`)
+
+   - Creación del diseño inicial y estilos básicos utilizando CSS.
+
+2. **JavaScript** (`feature/javascript`)
+
+   - Implementación de funcionalidades básicas con Vanilla JavaScript.
+
+3. **TypeScript** (`feature/typescript`)
+
+   - Migración del código JavaScript a TypeScript para mejorar la tipificación y la mantenibilidad.
+
+4. **React Fundamentos** (`feature/react-foundations`)
+
+   - Introducción a React y creación de componentes básicos.
+
+5. **React Implementación** (`feature/react-implementation`)
+
+   - Desarrollo avanzado con React, integración de estados y props.
+
+6. **Pruebas Unitarias** (`feature/unit-tests`)
+
+   - Implementación de pruebas unitarias para asegurar la calidad del código.
+
+7. **Principios SOLID y Herramientas** (`feature/solid-principles`)
+
+   - Aplicación de los principios SOLID y uso de herramientas de desarrollo modernas.
+
+8. **Proyecto Integrador** (`feature/integrative-project`)
+   - Integración de todas las funcionalidades para el funcionamiento completo del market, incluyendo paginación, autenticación y más.
+
+<br>
+
+## Documentacion por Fase
+
+Cada fase del proyecto tiene su propio archivo `README.md`, ubicado en la rama correspondiente. Este archivo documenta:
+
+- Las decisiones técnicas tomadas durante esa fase.
+- Los problemas enfrentados y cómo se resolvieron.
+- Instrucciones específicas para probar o entender esa etapa del desarrollo.
+
+Puedes acceder a la documentación detallada de cada fase cambiando de rama:
+
+```bash
+  git checkout feature/nombre-de-la-rama
+```
+
+Por ejemplo, para la fase de React Fundations:
+
+```bash
+  git checkout feature/react-foundations
+```
+
+<br>
+
+## Tecnologías Utilizadas
+
+- **Lenguajes:** JavaScript, TypeScript
+- **Librerías y Frameworks:** React
+- **Herramientas de Estilo:** CSS
+- **Control de Versiones:** Git, GitHub
+- **Pruebas:** Jest (u otra herramienta de pruebas unitarias)
+- **Otros:** Principios SOLID, herramientas de desarrollo modernas
+
+<br>
+
+## Instalación
+
+1. **Clonar el repositorio:**
 
    ```bash
-      git clone https://github.com/tu-usuario/BC56-FRONTEND-REACT-NTT.git
+   git clone https://github.com/victorwcv/BC56-FRONTEND-REACT-NTT.git
    ```
 
-2. **Navegar a la carpeta del proyecto**:
+2. **Navegar al directorio del proyecto:**
 
    ```bash
-      cd BC56-FRONTEND-REACT-NTT
+   cd  BC56-FRONTEND-REACT-NTT
    ```
 
-3. **Cambiar de Rama**:
+3. **Instalar dependencias**
 
    ```bash
-      git checkout feature/react-foundations
+   npm install
    ```
 
-4. **Instalar dependencias** (Vite necesita dependencias minimas):
+4. **Iniciar el proyecto**
 
    ```bash
-      npm install
+   npm run dev
    ```
 
-5. **Correr el proyecto** con Vite:
+5. **Abrir el Navegador en el puerto especificado**
 
-   ```bash
-      npm run dev
-   ```
+   http://localhost:5173/
 
-6. **Abrir el proyecto**
+<br>
 
-   Acceder a la URL proporcionada por Vite (generalmente http://localhost:5173).
+## Licencia
 
-## Estructura de Carpetas:
-
-La estructura del proyecto ha sido organizada para optimizar el desarrollo con React y TypeScript, siguiendo buenas prácticas de separación de responsabilidades:
-
-- `src/components/`: Contiene todos los componentes visuales reutilizables a nivel global de la aplicación.
-- `src/context/`: Maneja los contextos globales de la aplicación.
-- `src/css/`: Archivos CSS globales que aplican a toda la aplicación.
-- `src/mappers/`: Implementa el patrón Mapper para transformar datos entre la API y la lógica interna.
-- `src/pages/`: Contiene las diferentes páginas de la aplicación, organizadas por módulos.
-  - `src/pages/.../components/`: Componentes específicos de cada página.
-  - `src/pages/.../css/`: Estilos CSS específicos de cada página.
-- `src/services/`: La lógica que interactúa con APIs y servicios externos.
-- `src/types/`: Define las estructuras y tipos usados en la aplicación.
-  - `src/types/enums/`: Contiene enumeraciones utilizadas en la aplicación.
-  - `src/types/interfaces/`: Define las interfaces usadas en el tipado de TypeScript.
-- `src/utils/`: Funciones de utilidad que facilitan tareas comunes en el proyecto.
-
+Este proyecto está licenciado bajo la Licencia MIT. Para más detalles, consulta el archivo [LICENSE](./LICENSE).
