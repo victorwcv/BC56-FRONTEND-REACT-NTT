@@ -1,0 +1,123 @@
+.cartSummaryContainer {
+  padding: 1rem;
+  border-radius: 0.25rem;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cartSummary {
+  width: 100%;
+  table-layout: fixed;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.product__image {
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+}
+
+
+.cartSummary__header {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  font-weight: bold;
+  padding: 0.5rem 2rem;
+}
+
+.cartSummary__header td {
+  width: 7rem;
+  padding: 0.5rem 1rem;
+}
+
+.cartSummary__header td:nth-child(2) {
+  width: 10rem;
+}
+
+.cartSummary__body td {
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.cartSummary__deleteButton {
+  will-change: transform;
+  border: none;
+  background-color: var(--danger-color);
+  color: var(--light-color);
+  padding: 0.5rem 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.cartSummary__deleteButton:active {
+  transform: scale(0.98);
+}
+
+.cartSummary__quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.cartSummary__quantity span {
+  width: 1.5rem;
+}
+
+.cartSummary__quantity button {
+  will-change: transform;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: none;
+  background-color: var(--secondary-color);
+  color: var(--light-color);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  line-height: 1.25rem;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.cartSummary__quantity button:active {
+  transform: scale(0.98);
+}
+
+.cartSummary__body .cartSummary__empty {
+  padding: 2rem 0;
+}
+
+.cartSummary__grandTotal {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.cartSummary__grandTotal td:nth-child(1) {
+  text-align: right;
+  padding-right: 1rem;
+}
+
+.cartSummary__grandTotal td:nth-child(2) {
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.cartSummary__empty button {
+  padding: .5rem 1rem;
+  margin-top: 1rem;
+  border: none;
+  background-color: var(--secondary-color);
+  color: var(--light-color);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.cartSummary__empty button:hover {
+  box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.2);
+}

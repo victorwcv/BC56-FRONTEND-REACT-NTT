@@ -1,11 +1,17 @@
 .search {
+  position: sticky;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  background-color: var(--light-color);
   min-height: 2rem;
-  padding-block: 2rem;
+  padding-block: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
+  z-index: 100;
 }
 
 .search__input,
@@ -22,6 +28,10 @@
 /* media queries */
 
 @media (max-width: 480px) {
+  .search {
+    position: static;
+
+  }
   .search__input,
   .search__select {
     width: 300px;

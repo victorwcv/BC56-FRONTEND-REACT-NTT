@@ -1,132 +1,93 @@
-# My Market
+# Fase 5: React Implementación
 
-<br>
-<!-- ![My Market Banner](ruta/a/tu/banner.png) -->
+<br />
 
-## Descripción
+<div align="center">
+  <img src="/images/marketss.jpg" width={600} alt="Preview My Market" />
+</div>
+<br />
 
-**My Market** es una plataforma de comercio electrónico desarrollada como proyecto final del bootcamp REACT. Este proyecto implementa un carrito de compras completo, con funcionalidades avanzadas como paginación y autenticación, evolucionando desde **Vanilla JavaScript** hasta **React con TypeScript**. El desarrollo se divide en varias fases, cada una gestionada en una rama específica del repositorio.
+<div align="center">
+  <img src="/images/resumenss.jpg" width={600} alt="Preview Cart" />
+</div>
 
-<br>
+<br />
+<div align="center">
+  <img src="/images/modalss.jpg" width={600} alt="Preview Modal" />
+</div>
+<br />
 
-## Tabla de Contenidos
+En esta fase, se ha completado la implementación de la lógica de negocio y la funcionalidad total de la aplicación utilizando el hook `useReducer` de React para un manejo más avanzado del estado global. Además, se ha desarrollado un enrutador personalizado que permite la navegación entre las dos vistas principales del proyecto: **Market** y **Resumen**. Hasta el momento no se ha usado ninguna dependencia externa a **React** para implementar alguna funcionalidad del proyecto.
 
-- [Descripción](#descripción)
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Documentación por Fase](#documentacion-por-fase)
-- [Fases del Proyecto](#fases-del-proyecto)
-- [Tecnologías Utilizadas](#tecnologías-utilizadas)
-- [Instalación](#instalación)
-- [Licencia](#licencia)
+## Cambios Realizados
 
-<br>
+- **Manejo Avanzado del Estado**: Se ha implementado `useReducer` para gestionar el estado global de la aplicación, lo que permite un control más preciso sobre las acciones y actualizaciones de estado.
 
-## Estructura del Proyecto
+- **Enrutador Personalizado**: Se ha creado un enrutador básico que facilita la navegación entre las dos vistas principales del proyecto: la vista **Market**, donde los usuarios pueden explorar productos, y la vista **Resumen**, donde se muestran los detalles del carrito de compras.
 
-El proyecto está dividido en varias fases, cada una desarrollada en una rama separada para mantener un flujo de trabajo organizado y facilitar el seguimiento del progreso.
+- **Funcionalidad del Carrito de Compras**: Se ha mejorado el carrito, permitiendo a los usuarios seleccionar la cantidad de productos que desean agregar, así como actualizar o eliminar productos del carrito de manera dinámica.
 
-<br>
-  
-## Fases del Proyecto
+- **Formulario de Confirmación de Compra**: Se ha añadido un formulario que permite a los usuarios ingresar sus datos personales antes de confirmar la orden de compra, mejorando la funcionalidad del proceso de compra.
 
-1. **Diseño y Estilos** (`feature/design-and-styles`)
+- **Ajustes en la Vista Market**: Se han realizado mejoras en la vista de **Market**, incluyendo la posibilidad de seleccionar la cantidad de productos que se desea agregar al carrito para cada producto específico, así como diversas mejoras en los estilos y la usabilidad general.
 
-   - Creación del diseño inicial y estilos básicos utilizando CSS.
+Estos cambios permiten una experiencia de usuario más completa, con un flujo de compra dinámico y un manejo eficiente del estado de la aplicación.
 
-2. **JavaScript** (`feature/javascript`)
 
-   - Implementación de funcionalidades básicas con Vanilla JavaScript.
+## Probar proyecto localmente
 
-3. **TypeScript** (`feature/typescript`)
+Requisito: Tener instalado Node.js v20 LTS
 
-   - Migración del código JavaScript a TypeScript para mejorar la tipificación y la mantenibilidad.
-
-4. **React Fundamentos** (`feature/react-foundations`)
-
-   - Introducción a React y creación de componentes básicos.
-
-5. **React Implementación** (`feature/react-implementation`)
-
-   - Desarrollo avanzado con React, integración de estados y props.
-
-6. **Pruebas Unitarias** (`feature/unit-tests`)
-
-   - Implementación de pruebas unitarias para asegurar la calidad del código.
-
-7. **Principios SOLID y Herramientas** (`feature/solid-principles`)
-
-   - Aplicación de los principios SOLID y uso de herramientas de desarrollo modernas.
-
-8. **Proyecto Integrador** (`feature/integrative-project`)
-   - Integración de todas las funcionalidades para el funcionamiento completo del market, incluyendo paginación, autenticación y más.
-
-<br>
-
-## Documentacion por Fase
-
-Cada fase del proyecto tiene su propio archivo `README.md`, ubicado en la rama correspondiente. Este archivo documenta:
-
-- Las decisiones técnicas tomadas durante esa fase.
-- Los problemas enfrentados y cómo se resolvieron.
-- Instrucciones específicas para probar o entender esa etapa del desarrollo.
-
-Puedes acceder a la documentación detallada de cada fase cambiando de rama:
-
-```bash
-  git checkout feature/nombre-de-la-rama
-```
-
-Por ejemplo, para la fase de React Fundations:
-
-```bash
-  git checkout feature/react-foundations
-```
-
-<br>
-
-## Tecnologías Utilizadas
-
-- **Lenguajes:** JavaScript, TypeScript
-- **Librerías y Frameworks:** React
-- **Herramientas de Estilo:** CSS
-- **Control de Versiones:** Git, GitHub
-- **Pruebas:** Jest (u otra herramienta de pruebas unitarias)
-- **Otros:** Principios SOLID, herramientas de desarrollo modernas
-
-<br>
-
-## Instalación
-
-1. **Clonar el repositorio:**
+1. **Clonar el repositorio**:
 
    ```bash
-   git clone https://github.com/victorwcv/BC56-FRONTEND-REACT-NTT.git
+   git clone https://github.com/tu-usuario/BC56-FRONTEND-REACT-NTT.git
+
    ```
 
-2. **Navegar al directorio del proyecto:**
+2. **Navegar a la carpeta del proyecto**:
 
    ```bash
-   cd  BC56-FRONTEND-REACT-NTT
+   cd BC56-FRONTEND-REACT-NTT
    ```
 
-3. **Instalar dependencias**
+3. **Cambiar de Rama**:
 
+   ```bash
+   git checkout feature/react-implementation
+   ```
+
+4. **Instalar dependencias** (Vite necesita dependencias mínimas):
    ```bash
    npm install
    ```
 
-4. **Iniciar el proyecto**
+5. **Correr el proyecto** con Vite:
 
    ```bash
    npm run dev
    ```
 
-5. **Abrir el Navegador en el puerto especificado**
+6. **Abrir el proyecto**
 
-   http://localhost:5173/
+   Acceder a la URL proporcionada por Vite (generalmente http://localhost:5173).
 
-<br>
+## Estructura de Carpetas:
 
-## Licencia
+La estructura del proyecto sigue sido organizada para optimizar el desarrollo con React y TypeScript, siguiendo buenas prácticas de separación de responsabilidades, a comparacion de la fase anterior se agregaron nuevas carpetas:
 
-Este proyecto está licenciado bajo la Licencia MIT. Para más detalles, consulta el archivo [LICENSE](./LICENSE).
+- `src/components/`: Contiene todos los componentes visuales reutilizables a nivel global de la aplicación.
+- `src/context/`: Maneja el estado global de la aplicación.
+- `src/css/`: Archivos CSS globales que aplican a toda la aplicación.
+- `src/data/`: Contiene archivos de datos estáticos o estructuras predefinidas usadas en la aplicación, en este caso un array con los Distritos de Lima.
+- `src/helpers/`: Funciones auxiliares que simplifican la lógica y tareas comunes del proyecto.
+- `src/hooks/`: Contiene hooks personalizados para manejar lógica reutilizable en diferentes componentes.
+- `src/mappers/`: Implementa el patrón Mapper para transformar datos entre la API y la lógica interna.
+- `src/pages/`: Contiene las diferentes páginas de la aplicación, organizadas por módulos.
+  - `src/pages/.../components/`: Componentes específicos de cada página.
+  - `src/pages/.../css/`: Estilos CSS específicos de cada página.
+- `src/router/`: Maneja la lógica de enrutamiento del proyecto, permitiendo la navegación entre diferentes vistas.
+- `src/services/`: La lógica que interactúa con APIs y servicios externos.
+- `src/types/`: Define las estructuras y tipos usados en la aplicación.
+- `src/utils/`: Funciones de utilidad que facilitan tareas comunes en el proyecto.
+- `src/validations/`: Contiene la lógica para validación de formularios y entradas de usuario.

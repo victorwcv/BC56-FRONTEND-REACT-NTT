@@ -1,0 +1,52 @@
+.alertModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  z-index: 100;
+}
+
+.alertModal__container {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  padding: 2rem;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.alertModal__imgContainer {
+  width: 50%;
+  height: auto;
+  margin-inline: auto;
+}
+
+.alertModal__imgContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.alertModal__msg {
+  font-size: 1.1rem;
+  text-align: center;
+  line-height: 1.5rem;
+}
+
+.alertModal__btn {
+  cursor: pointer;
+  border: none;
+  background-color: var(--success-color);
+  font-size: 1.1rem;
+  color: var(--light-color);
+  border-radius: 0.25rem;
+  padding: 0.5rem 2rem;
+  align-self: center;
+}

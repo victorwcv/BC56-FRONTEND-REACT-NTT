@@ -1,0 +1,28 @@
+.field__container {
+  position: relative;
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.field__container label {
+  font-weight: bold;
+  margin-left: .25rem;
+}
+
+.field__container input,
+.field__container select {
+  padding: 0.5rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 0.25rem;
+  outline: none;
+}
+
+.field__error {
+  position: absolute;
+  right: 0.5rem;
+  bottom: -1.3rem;
+  color: red;
+  font-size: .75rem;
+}

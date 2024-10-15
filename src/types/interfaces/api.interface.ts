@@ -57,7 +57,34 @@ export interface Review {
 // Categories API interface
 
 export interface CategoryAPI {
-  slug: string;
+  slug: CatSlug;
   name: string;
   url: string;
 }
+
+export type CatSlug =
+  | "all"
+  | "beauty"
+  | "fragrances"
+  | "furniture"
+  | "groceries"
+  | "home-decoration"
+  | "kitchen-accessories"
+  | "laptops"
+  | "mens-shirts"
+  | "mens-shoes"
+  | "mens-watches"
+  | "mobile-accessories"
+  | "motorcycle"
+  | "skin-care"
+  | "smartphones"
+  | "sports-accessories"
+  | "sunglasses"
+  | "tablets"
+  | "tops"
+  | "vehicle"
+  | "womens-bags"
+  | "womens-dresses"
+  | "womens-jewellery"
+  | "womens-shoes"
+  | "womens-watches";

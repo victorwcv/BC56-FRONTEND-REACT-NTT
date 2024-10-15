@@ -1,38 +1,25 @@
 import styles from "./market.module.css";
-import { useEffect, useRef, useState } from "react";
-import { useAppContext } from "../../context/AppContext";
-import { getAllProducts } from "../../services/apiCalls";
 import ProductCard from "./components/ProductCard";
 import SearchBar from "./components/SearchBar";
-import { Product } from "../../types/interfaces/product.interface";
+import useAppState from "../../hooks/useAppState";
 import { CommonMessages } from "../../types/enums/commonMessages.enum";
 
 export default function Market() {
-  const { listedProducts, setListedProducts} = useAppContext();
-  const [message, setMessage] = useState<string>("");
-  const productsRef = useRef<Product[]>([]);
+  const { state } = useAppState();
+  const { filteredProducts } = state;
 
-  // fetch products
-  useEffect(() => {
-    setMessage(CommonMessages.LOADING_MESSAGE);
-    const fetchProducts = async () => {
-      const products = await getAllProducts();
-      if (!products) return;
-      setListedProducts(products);
-      productsRef.current = products;
-      setMessage("");
-    };
-    fetchProducts();
-  }, []);
+  const errorMesage = CommonMessages.NO_PRODUCTS;
 
   return (
     <div className={styles.market}>
-      <SearchBar products={productsRef.current} setmessage={setMessage}/>
+      <SearchBar />
       <section id="products" className={styles.products}>
-        {listedProducts.length > 0 ? listedProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        )) : (
-          <p>{message}</p>
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))
+        ) : (
+          <p>{errorMesage}</p>
         )}
       </section>
     </div>

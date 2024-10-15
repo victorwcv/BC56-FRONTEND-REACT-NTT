@@ -19,6 +19,7 @@
 .topbar__logo {
   display: flex;
   align-items: center;
+  cursor: pointer;
   gap: 10px;
 }
 

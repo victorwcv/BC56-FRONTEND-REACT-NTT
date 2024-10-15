@@ -1,18 +1,26 @@
 import styles from "../css/topBar.module.css";
-import { useAppContext } from "../context/AppContext";
-
+import { navigateTo } from "../router/navigate";
+import useCartItems from "../hooks/useCartItems";
 function TopBar() {
-  const { cartProducts } = useAppContext();
+  const cartItems = useCartItems();
 
   return (
     <header className={styles.topbar}>
       <div className={styles.topbar__container}>
-        <div className={styles.topbar__logo}>
+        <div
+          onClick={() => navigateTo("/")}
+          className={styles.topbar__logo}
+          title="Ir a inicio"
+        >
           <img src="/images/market.png" alt="Logotipo de My Market" />
           <h1>My Market</h1>
         </div>
 
-        <a href="#" className={styles.topbar__cart}>
+        <div
+          onClick={() => navigateTo("/order-summary")}
+          className={styles.topbar__cart}
+          title={`Productos en el carrito (${cartItems.length})`}
+        >
           <svg
             fill="currentColor"
             width="800px"
@@ -24,11 +32,10 @@ function TopBar() {
           </svg>
 
           <div className={styles.topbar__cart__count}>
-            <p id="cart-count">{cartProducts.length}</p>
+            <p id="cart-count">{cartItems.length}</p>
           </div>
-        </a>
+        </div>
       </div>
-
     </header>
   );
 }
