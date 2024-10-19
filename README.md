@@ -1,21 +1,9 @@
 # Fase 5: React Implementación
-
-<br />
-
-<div align="center">
-  <img src="/images/marketss.jpg" width={600} alt="Preview My Market" />
-</div>
-<br />
-
-<div align="center">
-  <img src="/images/resumenss.jpg" width={600} alt="Preview Cart" />
-</div>
-
-<br />
-<div align="center">
-  <img src="/images/modalss.jpg" width={600} alt="Preview Modal" />
-</div>
-<br />
+<p align=center>
+<img src="./public/images/marketss.jpg" width=300/>
+<img src="./public/images/resumenss.jpg" width=300/>
+<img src="./public/images/modalss.jpg" width=300/>
+</p>
 
 En esta fase, se ha completado la implementación de la lógica de negocio y la funcionalidad total de la aplicación utilizando el hook `useReducer` de React para un manejo más avanzado del estado global. Además, se ha desarrollado un enrutador personalizado que permite la navegación entre las dos vistas principales del proyecto: **Market** y **Resumen**. Hasta el momento no se ha usado ninguna dependencia externa a **React** para implementar alguna funcionalidad del proyecto.
 
