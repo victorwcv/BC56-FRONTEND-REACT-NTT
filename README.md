@@ -5,13 +5,13 @@
 <img src="./public/images/modalss.jpg" width=300/>
 </p>
 
-En esta fase, se ha completado la implementación de la lógica de negocio y la funcionalidad total de la aplicación utilizando el hook `useReducer` de React para un manejo más avanzado del estado global. Además, se ha desarrollado un enrutador personalizado que permite la navegación entre las dos vistas principales del proyecto: **Market** y **Resumen**. Hasta el momento no se ha usado ninguna dependencia externa a **React** para implementar alguna funcionalidad del proyecto.
+En esta fase, se ha completado la implementación de la lógica de negocio y la funcionalidad total de la aplicación utilizando el hook `useReducer` de React para un manejo más avanzado del estado global. Además,se ha implementado la librearia React Router v6 para la navegación entre las dos vistas principales del proyecto: **Market** y **Resumen**.
 
 ## Cambios Realizados
 
 - **Manejo Avanzado del Estado**: Se ha implementado `useReducer` para gestionar el estado global de la aplicación, lo que permite un control más preciso sobre las acciones y actualizaciones de estado.
 
-- **Enrutador Personalizado**: Se ha creado un enrutador básico que facilita la navegación entre las dos vistas principales del proyecto: la vista **Market**, donde los usuarios pueden explorar productos, y la vista **Resumen**, donde se muestran los detalles del carrito de compras.
+- **Enrutador**: Se ha utilizado React Router v6 para la navegación entre las dos vistas principales del proyecto: la vista **Market**, donde los usuarios pueden explorar productos, y la vista **Resumen**, donde se muestran los detalles del carrito de compras e información del usuario para el envío de su orden de compra.
 
 - **Funcionalidad del Carrito de Compras**: Se ha mejorado el carrito, permitiendo a los usuarios seleccionar la cantidad de productos que desean agregar, así como actualizar o eliminar productos del carrito de manera dinámica.
 
@@ -29,7 +29,7 @@ Requisito: Tener instalado Node.js v20 LTS
 1. **Clonar el repositorio**:
 
    ```bash
-   git clone https://github.com/tu-usuario/BC56-FRONTEND-REACT-NTT.git
+   git clone https://github.com/victorwcv/BC56-FRONTEND-REACT-NTT.git
 
    ```
 
@@ -74,7 +74,6 @@ La estructura del proyecto sigue sido organizada para optimizar el desarrollo co
 - `src/pages/`: Contiene las diferentes páginas de la aplicación, organizadas por módulos.
   - `src/pages/.../components/`: Componentes específicos de cada página.
   - `src/pages/.../css/`: Estilos CSS específicos de cada página.
-- `src/router/`: Maneja la lógica de enrutamiento del proyecto, permitiendo la navegación entre diferentes vistas.
 - `src/services/`: La lógica que interactúa con APIs y servicios externos.
 - `src/types/`: Define las estructuras y tipos usados en la aplicación.
 - `src/utils/`: Funciones de utilidad que facilitan tareas comunes en el proyecto.
