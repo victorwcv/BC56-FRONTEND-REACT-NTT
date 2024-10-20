@@ -1,23 +1,24 @@
 import styles from "../css/topBar.module.css";
-import { navigateTo } from "../router/navigate";
 import useCartItems from "../hooks/useCartItems";
+import { Link } from "react-router-dom";
+
 function TopBar() {
   const cartItems = useCartItems();
 
   return (
     <header className={styles.topbar}>
       <div className={styles.topbar__container}>
-        <div
-          onClick={() => navigateTo("/")}
+        <Link
+          to="/"
           className={styles.topbar__logo}
           title="Ir a inicio"
         >
           <img src="/images/market.png" alt="Logotipo de My Market" />
           <h1>My Market</h1>
-        </div>
+        </Link>
 
-        <div
-          onClick={() => navigateTo("/order-summary")}
+        <Link
+          to="/order-summary"
           className={styles.topbar__cart}
           title={`Productos en el carrito (${cartItems.length})`}
         >
@@ -34,7 +35,7 @@ function TopBar() {
           <div className={styles.topbar__cart__count}>
             <p id="cart-count">{cartItems.length}</p>
           </div>
-        </div>
+        </Link>
       </div>
     </header>
   );

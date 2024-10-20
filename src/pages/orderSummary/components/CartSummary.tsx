@@ -1,11 +1,12 @@
 import styles from "../css/CartSummary.module.css";
 import useAppState from "../../../hooks/useAppState";
 import { type CartItem } from "../../../types/interfaces/product.interface";
-import { navigateTo } from "../../../router/navigate";
+import { Link } from "react-router-dom";
 
 function CartSummary() {
   const { state, dispatch } = useAppState();
   const { cartItems } = state;
+
 
   const handleRemoveFromCart = (item: CartItem) => {
     dispatch({ type: "REMOVE_ITEM_FROM_CART", payload: item });
@@ -89,9 +90,9 @@ function CartSummary() {
             <tr>
               <td colSpan={6} className={styles.cartSummary__empty}>
                 <p>Carrito de compras vacio</p>
-                <button type="button" onClick={() => navigateTo("/")}>
+                <Link className={styles.cartSummary__link} to="/">
                   Ir a comprar
-                </button>
+                </Link>
               </td>
             </tr>
           )}

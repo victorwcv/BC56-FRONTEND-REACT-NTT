@@ -1,8 +1,8 @@
 import styles from "../css/alertModal.module.css";
 import { CommonMessages } from "../types/enums/commonMessages.enum";
 import useAppState from "../hooks/useAppState";
-import { navigateTo } from "../router/navigate";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   isOpen: boolean;
@@ -11,6 +11,7 @@ interface Props {
 
 function AlertModal({ isOpen, onClose }: Props) {
   const { dispatch } = useAppState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isOpen) {
@@ -31,7 +32,7 @@ function AlertModal({ isOpen, onClose }: Props) {
       type: "FILTER_PRODUCTS",
       payload: { category: "all", searchTerm: "" },
     });
-    navigateTo("/");
+    navigate("/");
   };
 
   return (
