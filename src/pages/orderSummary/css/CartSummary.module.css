@@ -125,15 +125,17 @@
   box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.2);
 }
 
-
 @media (max-width: 768px) {
-  .cartSummary, .cartSummary__header, .cartSummary__body, .cartSummary__body tr {
+  .cartSummary,
+  .cartSummary__header,
+  .cartSummary__body,
+  .cartSummary__body tr {
     display: block;
     width: 100%;
   }
 
   .cartSummary__header {
-    display: none; 
+    display: none;
   }
 
   .cartSummary__body tr {
@@ -167,13 +169,13 @@
     text-align: center;
     padding: 0;
   }
-  
+
   .cartSummary__grandTotal td:nth-child(2) {
     text-align: center;
     padding: 0;
   }
 
-
-
+  .cartSummary__empty p {
+    text-align: center;
+  }
 }
-
