@@ -1,7 +1,7 @@
 import styles from "./market.module.css";
 import ProductCard from "./components/ProductCard";
 import SearchBar from "./components/SearchBar";
-import useAppState from "../../hooks/useAppState";
+import {useAppState} from "../../hooks/useAppState";
 import { CommonMessages } from "../../types/enums/commonMessages.enum";
 
 export default function Market() {

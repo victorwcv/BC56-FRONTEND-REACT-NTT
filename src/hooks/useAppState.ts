@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../context/appContext";
 
-const useAppState = () => {
+export const useAppState = () => {
   const context = useContext(AppContext);
 
   if (!context) {
@@ -13,4 +13,4 @@ const useAppState = () => {
   return { state, dispatch };
 };
 
-export default useAppState;
+

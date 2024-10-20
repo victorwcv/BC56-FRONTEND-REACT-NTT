@@ -1,5 +1,5 @@
 import styles from "../css/topBar.module.css";
-import useCartItems from "../hooks/useCartItems";
+import {useCartItems} from "../hooks/useCartItems";
 import { Link } from "react-router-dom";
 
 function TopBar() {

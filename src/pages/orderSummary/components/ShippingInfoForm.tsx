@@ -1,15 +1,23 @@
 import styles from "../css/ShippingInfoForm.module.css";
-import { useDistricts } from "../../../hooks/useDistricts";
+// hooks
 import { useState } from "react";
-import { type ShippingForm } from "../../../types/interfaces/shippingForm.interface";
-import FormField from "../../../components/FormField";
+import { useNavigate } from "react-router-dom";
+import { useAppState } from "../../../hooks/useAppState";
+import { useDistricts } from "../../../hooks/useDistricts";
+import { useCartItems } from "../../../hooks/useCartItems";
 import { validateForm } from "../../../validations/shippingFormValidations";
-import useCartItems from "../../../hooks/useCartItems";
+// components
 import AlertModal from "../../../components/AlertModal";
+import FormField from "../../../components/FormField";
+// types
+import { type ShippingForm } from "../../../types/interfaces/shippingForm.interface";
+import { CommonMessages } from "../../../types/enums/commonMessages.enum";
 
 function ShippingInfoForm() {
   const cartItems = useCartItems();
   const districts = useDistricts();
+  const navigate = useNavigate();
+  const { dispatch } = useAppState();
   const [showModal, setShowModal] = useState<boolean>(false);
   const [formErrors, setFormErrors] = useState<Partial<ShippingForm>>({});
   const [formValues, setFormValues] = useState<ShippingForm>({
@@ -45,11 +53,28 @@ function ShippingInfoForm() {
     }
   };
 
+  const handleAlert = () => {
+    setShowModal(false);
+    dispatch({ type: "CLEAR_CART" });
+    dispatch({
+      type: "FILTER_PRODUCTS",
+      payload: { category: "all", searchTerm: "" },
+    });
+    navigate("/");
+  };
+
   const disabled = cartItems.length === 0;
 
   return (
     <>
-      {showModal && <AlertModal onClose={() => setShowModal(false)} isOpen={showModal} />}
+      {showModal && (
+        <AlertModal
+          isOpen={showModal}
+          handleAlert={handleAlert}
+          imgSrc={"./images/success.png"}
+          msg={CommonMessages.ORDER_SUCCESS}
+        />
+      )}
       <div className={styles.container}>
         <h3 className={styles.title}>Informacion de Envio</h3>
         <form onSubmit={handleSubmit}>

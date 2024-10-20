@@ -1,6 +1,6 @@
 import styles from "../css/searchBar.module.css";
 
-import useAppState from "../../../hooks/useAppState";
+import {useAppState} from "../../../hooks/useAppState";
 import { CatSlug } from "../../../types/interfaces/api.interface";
 
 function SearchBar() {

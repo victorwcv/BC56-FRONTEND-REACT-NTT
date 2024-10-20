@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../context/appContext";
 
-const useCartItems = () => {
+export const useCartItems = () => {
   const { state } = useContext(AppContext) || {};
 
   if (!state) {
@@ -12,5 +12,3 @@ const useCartItems = () => {
 
   return cartItems;
 };
-
-export default useCartItems;

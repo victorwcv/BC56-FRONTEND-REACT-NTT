@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { type Product } from "../../../types/interfaces/product.interface";
 import styles from "../css/productCard.module.css";
-import useAppState from "../../../hooks/useAppState";
+import {useAppState} from "../../../hooks/useAppState";
 
 interface ProductCardProps {
   product: Product;

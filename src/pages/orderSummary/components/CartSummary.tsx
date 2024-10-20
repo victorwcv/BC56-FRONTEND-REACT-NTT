@@ -1,5 +1,5 @@
 import styles from "../css/CartSummary.module.css";
-import useAppState from "../../../hooks/useAppState";
+import {useAppState} from "../../../hooks/useAppState";
 import { type CartItem } from "../../../types/interfaces/product.interface";
 import { Link } from "react-router-dom";
 
@@ -20,6 +20,7 @@ function CartSummary() {
     dispatch({ type: "INCREASE_QUANTITY", payload: item });
   };
 
+  
   return (
     <div className={styles.cartSummaryContainer}>
       <table className={styles.cartSummary}>
