@@ -74,7 +74,7 @@ Para visualizar el proyecto en esta fase de **JavaScript** usando **Vite**, sigu
 1. **Clonar el repositorio**: 
    
    ```bash
-      git clone https://github.com/tu-usuario/BC56-FRONTEND-REACT-NTT.git
+      git clone https://github.com/victorwcv/BC56-FRONTEND-REACT-NTT.git
    ```
 2. **Navegar a la carpeta del proyecto**:
 
