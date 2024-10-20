@@ -3,6 +3,7 @@
   border-radius: 0.25rem;
   background-color: white;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: auto;
 }
 
 .cartSummary {
@@ -123,3 +124,56 @@
 .cartSummary__link:hover {
   box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.2);
 }
+
+
+@media (max-width: 768px) {
+  .cartSummary, .cartSummary__header, .cartSummary__body, .cartSummary__body tr {
+    display: block;
+    width: 100%;
+  }
+
+  .cartSummary__header {
+    display: none; 
+  }
+
+  .cartSummary__body tr {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  .cartSummary__body td {
+    max-width: none;
+    display: block;
+    text-align: right;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  .cartSummary__body td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 30%;
+    text-align: left;
+    font-weight: 500;
+  }
+
+  .cartSummary__quantity {
+    justify-content: flex-end;
+  }
+
+  .cartSummary__grandTotal td:nth-child(1) {
+    text-align: center;
+    padding: 0;
+  }
+  
+  .cartSummary__grandTotal td:nth-child(2) {
+    text-align: center;
+    padding: 0;
+  }
+
+
+
+}
+

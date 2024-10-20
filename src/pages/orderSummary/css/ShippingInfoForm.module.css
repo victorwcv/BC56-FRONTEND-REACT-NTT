@@ -19,7 +19,7 @@
 
 .button {
   display: block;
-  width: 50%;
+  width: 200px;
   margin-inline: auto;
   cursor: pointer;
   border-radius: 0.5rem;
