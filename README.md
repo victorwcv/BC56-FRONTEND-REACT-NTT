@@ -53,11 +53,7 @@ El proyecto está dividido en varias fases, cada una desarrollada en una rama se
 
    - Implementación de pruebas unitarias para asegurar la calidad del código.
 
-7. **Principios SOLID y Herramientas** (`feature/solid-principles`)
-
-   - Aplicación de los principios SOLID y uso de herramientas de desarrollo modernas.
-
-8. **Proyecto Integrador** (`feature/integrative-project`)
+7. **Proyecto Integrador** (`feature/integrative-project`)
    - Integración de todas las funcionalidades para el funcionamiento completo del market, incluyendo paginación, autenticación y más.
 
 <br>
