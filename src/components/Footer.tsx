@@ -47,7 +47,7 @@ const legalLinks = [
 
 function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} data-testid="footer">
       <div className={styles.footer__container}>
         <p>Siguenos en nuestras redes sociales</p>
 

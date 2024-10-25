@@ -87,6 +87,7 @@ export const appReducer = (
       };
     case "REMOVE_ITEM_FROM_CART":
       return {
+        
         ...state,
         cartItems: removeItemFromCart(state.cartItems, action.payload),
       };

@@ -66,6 +66,7 @@ export interface FilterProductsAction {
   };
 }
 
+
 // app actions
 export type AppAction =
   | FetchCategoriesStartAction

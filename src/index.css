@@ -44,3 +44,13 @@ a {
   min-height: 100vh;
   min-width: 300px;
 }
+
+.errorPage {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}

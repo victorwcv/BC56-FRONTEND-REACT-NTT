@@ -1,18 +1,17 @@
+import { FC } from "react";
 import styles from "../css/topBar.module.css";
-import {useCartItems} from "../hooks/useCartItems";
 import { Link } from "react-router-dom";
 
-function TopBar() {
-  const cartItems = useCartItems();
+interface Props {
+  cartItemsLength: number;
+}
 
+const TopBar: FC<Props> = ({ cartItemsLength }) => {
+  
   return (
-    <header className={styles.topbar}>
+    <header className={styles.topbar} data-testid="topbar">
       <div className={styles.topbar__container}>
-        <Link
-          to="/"
-          className={styles.topbar__logo}
-          title="Ir a inicio"
-        >
+        <Link to="/" className={styles.topbar__logo} title="Ir a inicio">
           <img src="/images/market.png" alt="Logotipo de My Market" />
           <h1>My Market</h1>
         </Link>
@@ -20,7 +19,7 @@ function TopBar() {
         <Link
           to="/order-summary"
           className={styles.topbar__cart}
-          title={`Productos en el carrito (${cartItems.length})`}
+          title={`Productos en el carrito (${cartItemsLength})`}
         >
           <svg
             fill="currentColor"
@@ -33,12 +32,12 @@ function TopBar() {
           </svg>
 
           <div className={styles.topbar__cart__count}>
-            <p id="cart-count">{cartItems.length}</p>
+            <p id="cart-count">{cartItemsLength}</p>
           </div>
         </Link>
       </div>
     </header>
   );
-}
+};
 
 export default TopBar;

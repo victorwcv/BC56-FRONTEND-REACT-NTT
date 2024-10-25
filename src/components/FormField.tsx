@@ -1,12 +1,12 @@
-import { ShippingForm } from "../types/interfaces/shippingForm.interface";
 import styles from "../css/formField.module.css";
+import FormFieldSelect from "./FormFieldSelect";
 
 interface Props {
   label: string;
   type: string;
   as?: string;
   options?: string[];
-  name: keyof ShippingForm;
+  name: string;
   value: string;
   error?: string;
   disabled?: boolean;
@@ -30,24 +30,15 @@ const FormField: React.FC<Props> = ({
 }) => {
   if (as === "select") {
     return (
-      <div className={styles.field__container}>
-        <label htmlFor={name}>{label}</label>
-        <select
-          id={name}
-          name={name}
-          value={value}
-          onChange={onChange}
-          disabled={disabled}
-        >
-          <option value="">Seleccione una categoria</option>
-          {options?.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        {error && <p className={styles.field__error}>{error}</p>}
-      </div>
+      <FormFieldSelect
+        label={label}
+        name={name}
+        value={value}
+        error={error}
+        options={options}
+        onChange={onChange}
+        disabled={disabled}
+      />
     );
   }
 
