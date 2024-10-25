@@ -39,8 +39,8 @@ export interface Dimensions {
 }
 
 export interface Meta {
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: Date | string;
+  updatedAt: Date | string;
   barcode: string;
   qrCode: string;
 }
@@ -48,7 +48,7 @@ export interface Meta {
 export interface Review {
   rating: number;
   comment: string;
-  date: Date;
+  date: Date | string;
   reviewerName: string;
   reviewerEmail: string;
 }
@@ -57,7 +57,7 @@ export interface Review {
 // Categories API interface
 
 export interface CategoryAPI {
-  slug: CatSlug;
+  slug: string | CatSlug;
   name: string;
   url: string;
 }

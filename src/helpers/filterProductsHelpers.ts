@@ -3,7 +3,7 @@ import { type Product } from "../types/interfaces/product.interface";
 
 export const filterProducts = (
   products: Product[],
-  category: CatSlug = "all",
+  category: string | CatSlug  = "all",
   searchTerm: string = ""
 ) => {
   let filteredProducts = [];

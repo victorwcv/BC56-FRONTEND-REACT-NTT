@@ -4,7 +4,7 @@ import styles from "./orderSummary.module.css";
 
 function OrderSummary() {
   return (
-    <div className={styles.orderSummary}>
+    <div className={styles.orderSummary} data-testid="order-summary">
       <h2 className={styles.orderSummary__title}>Resumen de orden de compra</h2>
       <div className={styles.orderSummary__container}>
         <CartSummary />

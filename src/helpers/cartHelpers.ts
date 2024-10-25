@@ -7,15 +7,17 @@ export const addItemToCart = (
   quantity: number
 ) => {
   const existingItem = cartItems.find((item) => item.id === product.id);
-  const totalPrice = multiply(product.price, quantity);
   if (existingItem) {
     const newQuantity = existingItem.quantity + quantity;
+    const totalPrice = multiply(product.price, quantity);
+    const newTotal = add(existingItem.total, totalPrice);
     return cartItems.map((item) =>
       item.id === product.id
-        ? { ...item, quantity: newQuantity, total: totalPrice }
+        ? { ...item, quantity: newQuantity, total: newTotal }
         : item
     );
   }
+  const totalPrice = product.price * quantity;
   return [...cartItems, { ...product, quantity, total: totalPrice }];
 };
 

@@ -37,7 +37,7 @@ function SearchBar() {
         <option key="all" value="all" className={styles.search__option}>
           Todas las categorías
         </option>
-        {categories.map((category) => (
+        {categories.length > 0 && categories.map((category) => (
           <option
             key={category.slug}
             value={category.slug}

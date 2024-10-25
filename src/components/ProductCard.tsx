@@ -1,15 +1,14 @@
 import { useState } from "react";
-import { type Product } from "../../../types/interfaces/product.interface";
+import { type Product } from "../types/interfaces/product.interface";
 import styles from "../css/productCard.module.css";
-import {useAppState} from "../../../hooks/useAppState";
 
 interface ProductCardProps {
   product: Product;
+  onAddToCart: (product: Product, quantity: number) => void;
 }
 
-function ProductCard({ product }: ProductCardProps) {
+function ProductCard({ product, onAddToCart }: ProductCardProps) {
   const [quantity, setQuantity] = useState<string>("1");
-  const { dispatch } = useAppState();
 
   const handleQuantityChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -24,18 +23,6 @@ function ProductCard({ product }: ProductCardProps) {
     if (quantity === "" || parseInt(quantity, 10) <= 0) {
       setQuantity("1");
     }
-  };
-
-  const handleAddToCart = (): void => {
-    if (parseInt(quantity, 10) > 0) {
-      const quantityNumber = parseInt(quantity, 10);
-
-      dispatch({
-        type: "ADD_ITEM_TO_CART",
-        payload: { product, quantity: quantityNumber },
-      });
-    }
-    setQuantity("1");
   };
 
   return (
@@ -73,6 +60,7 @@ function ProductCard({ product }: ProductCardProps) {
               value={quantity}
               onChange={handleQuantityChange}
               onBlur={handleBlur}
+              data-testid="quantity-input"
             />
             <button
               onClick={() => {
@@ -87,7 +75,7 @@ function ProductCard({ product }: ProductCardProps) {
           <button
             className={styles.addToCart__button}
             type="button"
-            onClick={handleAddToCart}
+            onClick={() => onAddToCart(product, parseInt(quantity))}
           >
             <svg
               fill="currentColor"
