@@ -3,6 +3,8 @@ import App from "./App";
 import Market from "./pages/market/Market";
 import OrderSummary from "./pages/orderSummary/OrderSummary";
 import ErrorPage from "./components/ErrorPage";
+import LoginPage from "./pages/login-page/LoginPage";
+import PrivateRoute from "./components/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -12,11 +14,25 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Market />,
+        element: <LoginPage />,
       },
       {
-        path: "order-summary",
-        element: <OrderSummary />,
+        path: "market",
+        element: <PrivateRoute />,
+        children: [
+          {
+            path: "",
+            element: <Market />,
+          },
+          {
+            path: "market/:category",
+            element: <Market />,
+          },
+          {
+            path: "order-summary",
+            element: <OrderSummary />,
+          },
+        ],
       },
     ],
   },
