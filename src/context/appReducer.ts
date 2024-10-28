@@ -10,7 +10,11 @@ import { type InitialState } from "../types/interfaces/initialState.interface";
 
 //  initial state
 export const initialState: InitialState = {
-  user: null,
+  user: {
+    data: null,
+    loading: true,
+    error: null,
+  },
   categories: [],
   products: [],
   filteredProducts: [],
@@ -110,26 +114,25 @@ export const appReducer = (
     }
 
     // auth user actions
-    case "SET_USER_START":
-      return {
-        ...state,
-        isLoading: true,
-      };
-
     case "SET_USER":
       return {
         ...state,
-        user: action.payload,
-        isLoading: false,
+        user: {
+          data: action.payload,
+          loading: false,
+          error: null,
+        },
       };
 
     case "SET_USER_ERROR":
       return {
         ...state,
-        error: action.payload,
-        isLoading: false,
+        user: {
+          data: null,
+          loading: false,
+          error: action.payload,
+        },
       };
-
 
     default:
       return state;

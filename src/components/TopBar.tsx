@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styles from "../css/topBar.module.css";
 import { Link } from "react-router-dom";
-import { User } from "../types/interfaces/user.interface";
+import { type User } from "../types/interfaces/user.interface";
 
 interface Props {
   cartItemsLength: number;

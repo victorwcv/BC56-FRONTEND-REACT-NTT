@@ -3,5 +3,6 @@ export const saveLocalStore = (key: string, value: string) => {
 };
 
 export const getLocalStore = (key: string) => {
-  return localStorage.getItem(key);
+  if (!key) return;
+  return  localStorage.getItem(key);
 };

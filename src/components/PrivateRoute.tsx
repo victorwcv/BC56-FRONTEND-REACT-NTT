@@ -1,30 +1,19 @@
 import { Navigate, Outlet } from "react-router-dom";
-import TopBar from "./TopBar";
-import Footer from "./Footer";
 import { useAppState } from "../hooks/useAppState";
-import { useFetchAppData } from "../hooks/useFetchAppData";
+import { useGetLocalUser } from "../hooks/useGetLocalUser";
 
 function PrivateRoute() {
-  useFetchAppData();
-  const { state } = useAppState();
-  const { cartItems } = state;
-  const { user } = state;
+  useGetLocalUser();
+  
+  const {
+    state: { user: { data, loading } },
+  } = useAppState();
 
-  if (user === null) {
-    return <Navigate to="/" />;
+  if (loading) {
+    return null;
   }
 
-  return (
-    <>
-      <TopBar
-        cartItemsLength={cartItems.length}
-        user={user}
-        handleLogout={() => {}}
-      />
-      <Outlet />
-      <Footer />
-    </>
-  );
+  return data ? <Outlet /> : <Navigate to="/" />;
 }
 
 export default PrivateRoute;

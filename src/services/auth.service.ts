@@ -5,8 +5,6 @@ import { LoginUser, User } from "../types/interfaces/user.interface";
 import { saveLocalStore } from "../utils/localStore";
 import { REFRESHTOKEN, TOKEN } from "../constants/storage";
 
-
-
 // Call to authenticate user
 export const loginUser = async (data: LoginUser): Promise<User | null> => {
   const fetchConfig = {
@@ -15,7 +13,7 @@ export const loginUser = async (data: LoginUser): Promise<User | null> => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
-  }
+  };
   try {
     const res = await fetch(Endpoints.LOGIN, fetchConfig);
     if (!res.ok) {
@@ -27,6 +25,55 @@ export const loginUser = async (data: LoginUser): Promise<User | null> => {
     saveLocalStore(TOKEN, accessToken);
     saveLocalStore(REFRESHTOKEN, refreshToken);
     return userMapper(user);
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const authenticateUser = async (token: string): Promise<User | null> => {
+  if (!token) return null;
+
+  const fetchConfig = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const res = await fetch(Endpoints.AUTHENTICATE, fetchConfig);
+    if (!res.ok) {
+      const error = await res.json();
+      throw new Error(error.message);
+    }
+    const user: UserAPI = await res.json();
+    return userMapper(user);
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const refreshTokenAuth = async (
+  refreshToken: string
+) => {
+  if (!refreshToken) return null;
+
+  const fetchConfig = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ refreshToken }),
+  };
+  try {
+    const res = await fetch(Endpoints.REFRESH, fetchConfig);
+    if (!res.ok) {
+      const error = await res.json();
+      throw new Error(error.message);
+    }
+    const newTokens = await res.json();
+    const { accessToken, refreshToken } = newTokens;
+    saveLocalStore(TOKEN, accessToken);
+    saveLocalStore(REFRESHTOKEN, refreshToken);
+    return newTokens;
   } catch (error) {
     throw error;
   }

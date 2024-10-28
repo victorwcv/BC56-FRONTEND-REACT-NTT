@@ -1,39 +1,26 @@
-import styles from "./market.module.css";
-import ProductCard from "../../components/ProductCard";
-import SearchBar from "./components/SearchBar";
+import styles from "./Market.module.css";
+import Footer from "../../components/Footer";
+import TopBar from "../../components/TopBar";
+import { Outlet } from "react-router-dom";
 import { useAppState } from "../../hooks/useAppState";
-import { CommonMessages } from "../../types/enums/commonMessages.enum";
-import { type Product } from "../../types/interfaces/product.interface";
+import { useFetchAppData } from "../../hooks/useFetchAppData";
 
 const Market: React.FC = () => {
-  const { state, dispatch } = useAppState();
-  const { filteredProducts } = state;
-  const errorMesage = CommonMessages.NO_PRODUCTS;
+  
+  useFetchAppData();
 
-  const handleAddToCart = (product: Product, quantity: number): void => {
-    if (quantity <= 0) return;
-    dispatch({
-      type: "ADD_ITEM_TO_CART",
-      payload: { product, quantity },
-    });
-  };
+  const {
+    state: {
+      cartItems,
+      user: { data },
+    },
+  } = useAppState();
 
   return (
-    <div className={styles.market} data-testid="market">
-      <SearchBar />
-      <section id="products" className={styles.products}>
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              onAddToCart={handleAddToCart}
-            />
-          ))
-        ) : (
-          <p>{errorMesage}</p>
-        )}
-      </section>
+    <div className={styles.market}>
+      <TopBar cartItemsLength={cartItems.length} user={data} handleLogout={() => {}} />
+      <Outlet />
+      <Footer />
     </div>
   );
 };

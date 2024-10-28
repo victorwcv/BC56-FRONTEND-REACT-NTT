@@ -5,6 +5,7 @@ import OrderSummary from "./pages/orderSummary/OrderSummary";
 import ErrorPage from "./components/ErrorPage";
 import LoginPage from "./pages/login-page/LoginPage";
 import PrivateRoute from "./components/PrivateRoute";
+import Products from "./pages/market/components/Products";
 
 export const router = createBrowserRouter([
   {
@@ -23,14 +24,16 @@ export const router = createBrowserRouter([
           {
             path: "",
             element: <Market />,
-          },
-          {
-            path: "market/:category",
-            element: <Market />,
-          },
-          {
-            path: "order-summary",
-            element: <OrderSummary />,
+            children: [
+              {
+                path: "",
+                element: <Products />,
+              },
+              {
+                path: "order-summary",
+                element: <OrderSummary />,
+              },
+            ],
           },
         ],
       },

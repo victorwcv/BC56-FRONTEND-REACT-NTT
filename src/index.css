@@ -54,3 +54,14 @@ a {
   align-items: center;
   gap: 1rem;
 }
+
+.loading {
+  height: 100vh;
+  min-height: 500px;
+  min-width: 300px;
+  font-size: 2rem;
+  color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

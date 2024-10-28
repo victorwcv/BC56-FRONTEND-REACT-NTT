@@ -1,4 +1,4 @@
-import styles from "../css/searchBar.module.css";
+import styles from "../market.module.css";
 
 import {useAppState} from "../../../hooks/useAppState";
 import { CatSlug } from "../../../types/interfaces/api.interface";
