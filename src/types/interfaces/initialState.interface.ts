@@ -1,10 +1,12 @@
 import { type Category } from "./category.interface";
 import { type CartItem, type Product } from "./product.interface";
 import { type CatSlug } from "./api.interface";
+import { User } from "./user.interface";
 
 // interface for the context
 export interface InitialState {
   categories: Category[];
+  user: User | null;
   products: Product[];
   filteredProducts: Product[];
   selectedCategory: CatSlug;
