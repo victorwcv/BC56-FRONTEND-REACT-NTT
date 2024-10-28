@@ -1,4 +1,5 @@
 import styles from "../css/ShippingInfoForm.module.css";
+import successIMG from "../../../assets/success.png";
 // hooks
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -60,7 +61,7 @@ function ShippingInfoForm() {
       type: "FILTER_PRODUCTS",
       payload: { category: "all", searchTerm: "" },
     });
-    navigate("/");
+    navigate("/market");
   };
 
   const disabled = cartItems.length === 0;
@@ -71,7 +72,7 @@ function ShippingInfoForm() {
         <AlertModal
           isOpen={showModal}
           handleAlert={handleAlert}
-          imgSrc={"./images/success.png"}
+          imgSrc={successIMG}
           msg={CommonMessages.ORDER_SUCCESS}
         />
       )}

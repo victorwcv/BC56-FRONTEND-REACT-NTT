@@ -5,8 +5,8 @@ import { User } from "./user.interface";
 
 // interface for the context
 export interface InitialState {
-  categories: Category[];
   user: User | null;
+  categories: Category[];
   products: Product[];
   filteredProducts: Product[];
   selectedCategory: CatSlug;

@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { useAppState } from "./useAppState";
-import { getAllProducts, getCategories } from "../services/apiCalls";
+import { getAllProducts, getCategories } from "../services/market.service";
 
 export const useFetchAppData = () => {
-
   const { dispatch } = useAppState();
 
   useEffect(() => {

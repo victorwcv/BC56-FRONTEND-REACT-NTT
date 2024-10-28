@@ -8,14 +8,19 @@ function PrivateRoute() {
   useFetchAppData();
   const { state } = useAppState();
   const { cartItems } = state;
+  const { user } = state;
 
-  if (false) {
+  if (user === null) {
     return <Navigate to="/" />;
   }
 
   return (
     <>
-      <TopBar cartItemsLength={cartItems.length} />
+      <TopBar
+        cartItemsLength={cartItems.length}
+        user={user}
+        handleLogout={() => {}}
+      />
       <Outlet />
       <Footer />
     </>

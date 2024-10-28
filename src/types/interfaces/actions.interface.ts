@@ -1,6 +1,7 @@
 import { Category } from "./category.interface";
 import { Product } from "./product.interface";
 import { CatSlug } from "./api.interface";
+import { User } from "./user.interface";
 
 // fetch categories actions
 export interface FetchCategoriesStartAction {
@@ -66,6 +67,19 @@ export interface FilterProductsAction {
   };
 }
 
+// auth actions
+export interface SetUserStartAction {
+  type: "SET_USER_START";
+}
+export interface SetUserAction {
+  type: "SET_USER";
+  payload: User | null;
+}
+
+export interface SetUserErrorAction {
+  type: "SET_USER_ERROR";
+  payload: string;
+}
 
 // app actions
 export type AppAction =
@@ -80,4 +94,7 @@ export type AppAction =
   | FetchProductsStartAction
   | FetchProductsSuccessAction
   | FetchProductsErrorAction
-  | FilterProductsAction;
+  | FilterProductsAction
+  | SetUserAction
+  | SetUserStartAction
+  | SetUserErrorAction;

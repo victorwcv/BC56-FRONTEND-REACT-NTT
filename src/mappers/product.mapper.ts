@@ -1,17 +1,18 @@
 import {
-  ProductsAPI,
+  type ProductsAPI,
   type ProductAPI,
 } from "../types/interfaces/api.interface";
 import { type Product } from "../types/interfaces/product.interface";
 
 export const mapProduct = (productApi: ProductAPI): Product => {
+  const { id, title, description, price, category, thumbnail } = productApi;
   return {
-    id: productApi.id,
-    title: productApi.title,
-    description: productApi.description,
-    price: productApi.price,
-    category: productApi.category,
-    image: productApi.thumbnail,
+    id,
+    title,
+    description,
+    price,
+    category,
+    image: thumbnail,
   };
 };
 

@@ -1,3 +1,7 @@
+.form {
+  position: relative;
+}
+
 .field__container {
   display: flex;
   position: relative;
@@ -59,4 +63,13 @@
 
 .btnSubmit:active {
   transform: scale(0.98);
+}
+
+.form__error {
+  position: absolute;
+  right: -1rem;
+  bottom: -4rem; 
+  color: red;
+  font-size: .9rem;
+  font-weight: 300;
 }

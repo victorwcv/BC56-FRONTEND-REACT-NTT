@@ -91,7 +91,7 @@ function CartSummary() {
             <tr>
               <td colSpan={6} className={styles.cartSummary__empty}>
                 <p>Carrito de compras vacio</p>
-                <Link className={styles.cartSummary__link} to="/">
+                <Link className={styles.cartSummary__link} to="/market">
                   Ir a comprar
                 </Link>
               </td>

@@ -1,12 +1,12 @@
 import { vi, Mock } from "vitest";
-import { getCategories, getAllProducts } from "./apiCalls";
+import { getCategories, getAllProducts } from "./market.service";
 import { Errormessages } from "../types/enums/errorMesages.enum";
-import { mapCategories } from "../mappers/categoryMapper";
-import { mapProducts } from "../mappers/productMapper";
+import { mapCategories } from "../mappers/category.mapper";
+import { mapProducts } from "../mappers/product.mapper";
 import { Endpoints } from "../types/enums/endPoints.enum";
 import { mockProductsAPI } from "../mock/productsAPI.mock";
-import * as categoryMapper from "../mappers/categoryMapper";
-import * as productMapper from "../mappers/productMapper";
+import * as categoryMapper from "../mappers/category.mapper";
+import * as productMapper from "../mappers/product.mapper";
 
 global.fetch = vi.fn();
 

@@ -1,0 +1,86 @@
+.forgotPass {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(5px);
+  --wrbkit-backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  z-index: 20;
+}
+
+.forgotPass__container {
+  width: 400px;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  margin: 1rem;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.forgotPass__title {
+  text-align: center;
+  color: var(--secondary-color);
+}
+
+.forgotPass__subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.field__container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 2rem 0;
+}
+
+.field__label {
+  margin-left: 0.25rem;
+}
+
+.field__input {
+  padding: 0.5rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+.field__error {
+  position: absolute;
+  right: 0.5rem;
+  bottom: -1.3rem;
+  color: red;
+  font-size: 0.75rem;
+}
+
+.forgotPass__btnContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.forgotPass__btn,
+.forgotPass__btnCancel {
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+  background-color: var(--success-color);
+  color: var(--light-color);
+  border-radius: 0.25rem;
+  padding: 0.5rem 2rem;
+  align-self: center;
+}
+
+.forgotPass__btnCancel {
+  background-color: var(--danger-color);
+}

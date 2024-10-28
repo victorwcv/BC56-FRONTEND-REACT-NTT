@@ -10,6 +10,7 @@ import { type InitialState } from "../types/interfaces/initialState.interface";
 
 //  initial state
 export const initialState: InitialState = {
+  user: null,
   categories: [],
   products: [],
   filteredProducts: [],
@@ -87,7 +88,6 @@ export const appReducer = (
       };
     case "REMOVE_ITEM_FROM_CART":
       return {
-        
         ...state,
         cartItems: removeItemFromCart(state.cartItems, action.payload),
       };
@@ -108,6 +108,28 @@ export const appReducer = (
         searchTerm: searchTerm,
       };
     }
+
+    // auth user actions
+    case "SET_USER_START":
+      return {
+        ...state,
+        isLoading: true,
+      };
+
+    case "SET_USER":
+      return {
+        ...state,
+        user: action.payload,
+        isLoading: false,
+      };
+
+    case "SET_USER_ERROR":
+      return {
+        ...state,
+        error: action.payload,
+        isLoading: false,
+      };
+
 
     default:
       return state;
