@@ -3,11 +3,8 @@ import Footer from "../../components/Footer";
 import TopBar from "../../components/TopBar";
 import { Outlet } from "react-router-dom";
 import { useAppState } from "../../hooks/useAppState";
-import { useFetchAppData } from "../../hooks/useFetchAppData";
 
 const Market: React.FC = () => {
-  
-  useFetchAppData();
 
   const {
     state: {
@@ -15,6 +12,7 @@ const Market: React.FC = () => {
       user: { data },
     },
   } = useAppState();
+
 
   return (
     <div className={styles.market}>

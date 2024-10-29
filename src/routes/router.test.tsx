@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
 import { createMemoryRouter } from "react-router-dom";
-import { AppContextProvider } from "./context/AppContextProvider";
+import { AppContextProvider } from "../context/AppContextProvider";
 import "@testing-library/jest-dom";
 
 describe("Router Tests", () => {

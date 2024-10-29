@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppState } from "../../../hooks/useAppState";
 import { useDistricts } from "../../../hooks/useDistricts";
-import { useCartItems } from "../../../hooks/useCartItems";
 import { validateForm } from "../../../validations/shippingFormValidations";
 // components
 import AlertModal from "../../../components/AlertModal";
@@ -15,10 +14,12 @@ import { type ShippingForm } from "../../../types/interfaces/shippingForm.interf
 import { CommonMessages } from "../../../types/enums/commonMessages.enum";
 
 function ShippingInfoForm() {
-  const cartItems = useCartItems();
   const districts = useDistricts();
   const navigate = useNavigate();
-  const { dispatch } = useAppState();
+  const {
+    dispatch,
+    state: { cartItems },
+  } = useAppState();
   const [showModal, setShowModal] = useState<boolean>(false);
   const [formErrors, setFormErrors] = useState<Partial<ShippingForm>>({});
   const [formValues, setFormValues] = useState<ShippingForm>({

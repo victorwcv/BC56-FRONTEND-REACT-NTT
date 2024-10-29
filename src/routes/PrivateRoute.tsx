@@ -1,12 +1,18 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAppState } from "../hooks/useAppState";
 import { useGetLocalUser } from "../hooks/useGetLocalUser";
+import { useFetchAppData } from "../hooks/useFetchAppData";
+import { useGetLocalCartItems } from "../hooks/useGetLocalCartItems";
 
-function PrivateRoute() {
+const PrivateRoute = () => {
+  useFetchAppData();
   useGetLocalUser();
-  
+  useGetLocalCartItems();
+
   const {
-    state: { user: { data, loading } },
+    state: {
+      user: { data, loading },
+    },
   } = useAppState();
 
   if (loading) {
@@ -14,6 +20,6 @@ function PrivateRoute() {
   }
 
   return data ? <Outlet /> : <Navigate to="/" />;
-}
+};
 
 export default PrivateRoute;

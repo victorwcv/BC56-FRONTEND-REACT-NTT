@@ -71,6 +71,12 @@ export const appReducer = (
       };
 
     // cart actions
+    case "SET_CART_ITEMS":
+      return {
+        ...state,
+        cartItems: action.payload,
+    }
+    
     case "ADD_ITEM_TO_CART":
       return {
         ...state,

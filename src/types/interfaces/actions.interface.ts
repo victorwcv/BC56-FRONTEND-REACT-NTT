@@ -1,5 +1,5 @@
 import { Category } from "./category.interface";
-import { Product } from "./product.interface";
+import { CartItem, Product } from "./product.interface";
 import { CatSlug } from "./api.interface";
 import { User } from "./user.interface";
 
@@ -19,6 +19,12 @@ export interface FetchCategoriesErrorAction {
 }
 
 // cart actions
+
+export interface SetCartItems {
+  type: "SET_CART_ITEMS";
+  payload: CartItem[];
+}
+
 export interface AddItemToCartAction {
   type: "ADD_ITEM_TO_CART";
   payload: { product: Product; quantity: number };
@@ -86,6 +92,7 @@ export type AppAction =
   | FetchCategoriesStartAction
   | FetchCategoriesSuccessAction
   | FetchCategoriesErrorAction
+  | SetCartItems	
   | AddItemToCartAction
   | IncreaseQuantityAction
   | DecreaseQuantityAction
