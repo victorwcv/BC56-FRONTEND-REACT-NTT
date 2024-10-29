@@ -1,24 +1,24 @@
-import { FC } from "react";
-import styles from "../css/topBar.module.css";
 import { Link } from "react-router-dom";
-import { type User } from "../types/interfaces/user.interface";
+import styles from "../css/topBar.module.css";
 
 interface Props {
   cartItemsLength: number;
-  user: User | null;
+  username?: string;
   handleLogout: () => void;
 }
 
-const TopBar: FC<Props> = ({ cartItemsLength, user, handleLogout }) => {
+const TopBar: React.FC<Props> = ({ cartItemsLength, username = "Usuario", handleLogout }) => {
   return (
     <header className={styles.topbar} data-testid="topbar">
       <div className={styles.topbar__container}>
+
         <Link to="/market" className={styles.topbar__logo} title="Ir a inicio">
           <img src="/images/market.png" alt="Logotipo de My Market" />
           <h1>My Market</h1>
         </Link>
 
         <div className={styles.topbar__right}>
+
           <Link
             to="/market/order-summary"
             className={styles.topbar__cart}
@@ -38,16 +38,19 @@ const TopBar: FC<Props> = ({ cartItemsLength, user, handleLogout }) => {
               <p id="cart-count">{cartItemsLength}</p>
             </div>
           </Link>
+
           <div className={styles.topbar__user}>
-            {user && (
-              <p className={styles.topbar__greeting}>
-                Bienvenido, {user.username}
-              </p>
-            )}
+             
+            <p className={styles.topbar__greeting}>
+              Bienvenido, {username}
+            </p>
+            
             <button className={styles.topbar__logout} onClick={handleLogout}>
               Cerrar sesión
             </button>
+            
           </div>
+
         </div>
       </div>
     </header>

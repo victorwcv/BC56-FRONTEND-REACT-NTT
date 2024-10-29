@@ -87,6 +87,10 @@ export interface SetUserErrorAction {
   payload: string;
 }
 
+export interface LogoutAction {
+  type: "LOGOUT";
+}
+
 // app actions
 export type AppAction =
   | FetchCategoriesStartAction
@@ -104,4 +108,5 @@ export type AppAction =
   | FilterProductsAction
   | SetUserAction
   | SetUserStartAction
-  | SetUserErrorAction;
+  | SetUserErrorAction
+  | LogoutAction;

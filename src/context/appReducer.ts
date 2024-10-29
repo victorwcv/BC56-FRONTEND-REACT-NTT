@@ -75,8 +75,8 @@ export const appReducer = (
       return {
         ...state,
         cartItems: action.payload,
-    }
-    
+      };
+
     case "ADD_ITEM_TO_CART":
       return {
         ...state,
@@ -138,6 +138,17 @@ export const appReducer = (
           loading: false,
           error: action.payload,
         },
+      };
+
+    case "LOGOUT":
+      return {
+        ...state,
+        user: {
+          data: null,
+          loading: false,
+          error: null,
+        },
+        cartItems: [],
       };
 
     default:
