@@ -91,6 +91,11 @@ export interface LogoutAction {
   type: "LOGOUT";
 }
 
+export interface SetCurrentPageAction {
+  type: "SET_CURRENT_PAGE";
+  payload: number;
+}
+
 // app actions
 export type AppAction =
   | FetchCategoriesStartAction
@@ -109,4 +114,5 @@ export type AppAction =
   | SetUserAction
   | SetUserStartAction
   | SetUserErrorAction
-  | LogoutAction;
+  | LogoutAction
+  | SetCurrentPageAction;

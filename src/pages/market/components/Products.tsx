@@ -4,13 +4,35 @@ import { useAppState } from "../../../hooks/useAppState";
 import { CommonMessages } from "../../../types/enums/commonMessages.enum";
 import { type Product } from "../../../types/interfaces/product.interface";
 import SearchBar from "./SearchBar";
+import PaginationControls from "../../../components/PaginationControls";
+import usePagination from "../../../hooks/usePagination";
+import { getDisplayedProducts } from "../../../helpers/pagination.helper";
+import placeholderIMG from "../../../assets/no-image-placeholder.jpg";
+
+const itemsPerPage = 6;
 
 const Products = () => {
   const {
     dispatch,
-    state: { filteredProducts },
+    state: { filteredProducts, currentPage, selectedCategory, searchTerm },
   } = useAppState();
   const errorMesage = CommonMessages.NO_PRODUCTS;
+
+  const totalItems = filteredProducts.length;
+
+  const { pageCount, handlePageChange } = usePagination(
+    totalItems,
+    itemsPerPage,
+    dispatch,
+    selectedCategory,
+    searchTerm  
+  )
+
+  const displayedProducts = getDisplayedProducts(
+    filteredProducts,
+    currentPage,
+    itemsPerPage
+  );
 
   const handleAddToCart = (product: Product, quantity: number): void => {
     if (quantity <= 0) return;
@@ -24,18 +46,20 @@ const Products = () => {
     <div className={styles.products__container}>
       <SearchBar />
       <section id="products" className={styles.products}>
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
+        {displayedProducts.length > 0 ? (
+          displayedProducts.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
               onAddToCart={handleAddToCart}
+              placeholderIMG={placeholderIMG}
             />
           ))
         ) : (
           <p>{errorMesage}</p>
         )}
       </section>
+      <PaginationControls currentPage={currentPage} pageCount={pageCount} onPageChange={handlePageChange} />
     </div>
   );
 };

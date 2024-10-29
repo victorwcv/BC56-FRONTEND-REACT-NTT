@@ -12,6 +12,7 @@ export interface InitialState {
   selectedCategory: CatSlug;
   searchTerm: string;
   cartItems: CartItem[];
+  currentPage: number;
   isLoading: boolean;
   error: string | null;
 }

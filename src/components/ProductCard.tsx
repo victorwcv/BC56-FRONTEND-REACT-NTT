@@ -5,10 +5,12 @@ import styles from "../css/productCard.module.css";
 interface ProductCardProps {
   product: Product;
   onAddToCart: (product: Product, quantity: number) => void;
+  placeholderIMG?: string
 }
 
-function ProductCard({ product, onAddToCart }: ProductCardProps) {
+function ProductCard({ product, onAddToCart, placeholderIMG }: ProductCardProps) {
   const [quantity, setQuantity] = useState<string>("1");
+  const imgSrc = product.image || placeholderIMG
 
   const handleQuantityChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -28,7 +30,7 @@ function ProductCard({ product, onAddToCart }: ProductCardProps) {
   return (
     <figure className={styles.product}>
       <div className={styles.product__imageContainer}>
-        <img src={product.image} alt="eggs" className={styles.product__image} />
+        <img src={imgSrc} alt="eggs" className={styles.product__image} />
       </div>
       <figcaption className={styles.product__description}>
         <h2>{product.title}</h2>

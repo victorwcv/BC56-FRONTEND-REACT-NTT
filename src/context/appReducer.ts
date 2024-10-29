@@ -21,6 +21,7 @@ export const initialState: InitialState = {
   selectedCategory: "all",
   searchTerm: "",
   cartItems: [],
+  currentPage: 1,
   isLoading: false,
   error: null,
 };
@@ -149,6 +150,12 @@ export const appReducer = (
           error: null,
         },
         cartItems: [],
+      };
+
+    case "SET_CURRENT_PAGE":
+      return {
+        ...state,
+        currentPage: action.payload,
       };
 
     default:
