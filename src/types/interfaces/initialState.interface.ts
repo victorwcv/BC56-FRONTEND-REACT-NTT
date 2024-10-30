@@ -8,9 +8,7 @@ export interface InitialState {
   categories: Category[];
   products: Product[];
   filteredProducts: Product[];
-
   cartItems: CartItem[];
-  currentPage: number;
   isLoading: boolean;
   error: string | null;
 }
