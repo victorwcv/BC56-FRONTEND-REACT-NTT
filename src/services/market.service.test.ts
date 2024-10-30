@@ -1,88 +1,136 @@
-import { vi, Mock } from "vitest";
-import { getCategories, getAllProducts } from "./market.service";
-import { Errormessages } from "../types/enums/errorMesages.enum";
+import { describe, it, expect, vi, afterEach } from "vitest";
+import { getCategories, getAllProducts, getProductsByCategory } from "./market.service";
 import { mapCategories } from "../mappers/category.mapper";
 import { mapProducts } from "../mappers/product.mapper";
-import { Endpoints } from "../types/enums/endPoints.enum";
-import { mockProductsAPI } from "../mock/productsAPI.mock";
-import * as categoryMapper from "../mappers/category.mapper";
-import * as productMapper from "../mappers/product.mapper";
+import { Errormessages } from "../types/enums/errorMesages.enum";
 
+// Mocks de los mappers
+vi.mock("../mappers/category.mapper", () => ({
+  mapCategories: vi.fn(),
+}));
+vi.mock("../mappers/product.mapper", () => ({
+  mapProducts: vi.fn(),
+}));
+
+// Mock global de fetch
 global.fetch = vi.fn();
 
-describe("getCategories", () => {
-  const mockMapCategories = vi.spyOn(categoryMapper, "mapCategories");
-
-  test("should fetch categories and map them correctly", async () => {
-    const mockCategories = [{ name: "beauty", slug: "beauty", url: "beauty" }];
-    (fetch as Mock).mockResolvedValue({
-      ok: true,
-      json: async () => mockCategories,
-    });
-
-    const result = await getCategories();
-
-    expect(fetch).toHaveBeenCalledWith(Endpoints.CATEGORIES);
-    expect(mockMapCategories).toHaveBeenCalledWith(mockCategories);
-    expect(result).toEqual(mapCategories(mockCategories));
+describe("Product Service", () => {
+  afterEach(() => {
+    vi.clearAllMocks();
   });
 
-  test("should throw an error if the fetch fails", async () => {
-    (fetch as Mock).mockResolvedValue({
-      ok: false,
-      status: 500,
-      statusText: "Internal Server Error",
+  describe("getCategories", () => {
+    it("should fetch categories and map them correctly", async () => {
+      const mockResponse = [{ id: 1, name: "Category 1" }];
+      (fetch as jest.Mock).mockResolvedValue({
+        ok: true,
+        json: async () => mockResponse,
+      });
+      (mapCategories as jest.Mock).mockReturnValue(["Category 1"]);
+
+      const categories = await getCategories();
+
+      expect(fetch).toHaveBeenCalledWith("https://dummyjson.com/products/categories"); 
+      expect(mapCategories).toHaveBeenCalledWith(mockResponse);
+      expect(categories).toEqual(["Category 1"]);
     });
 
-    const consoleErrorSpy = vi
-      .spyOn(console, "error")
-      .mockImplementation(() => {});
+    it("should handle errors and log them for failed fetch", async () => {
+      const consoleErrorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+      (fetch as jest.Mock).mockResolvedValue({
+        ok: false,
+        status: 500,
+        statusText: "Internal Server Error",
+      });
 
-    const result = await getCategories();
+      const categories = await getCategories();
 
-    expect(consoleErrorSpy).toHaveBeenCalledWith(
-      Errormessages.ERROR_GETTING_CATEGORIES,
-      expect.any(Error)
-    );
-    expect(result).toBeUndefined();
-    consoleErrorSpy.mockRestore();
-  });
-});
-
-describe("getAllProducts", () => {
-  const mockMapProducts = vi.spyOn(productMapper, "mapProducts");
-
-  test("should fetch products and map them correctly", async () => {
-    (fetch as Mock).mockResolvedValue({
-      ok: true,
-      json: async () => mockProductsAPI,
+      expect(categories).toBeUndefined();
+      expect(consoleErrorSpy).toHaveBeenCalledWith(
+        Errormessages.ERROR_GETTING_CATEGORIES,
+        expect.any(Error)
+      );
+      consoleErrorSpy.mockRestore();
     });
-
-    const result = await getAllProducts();
-
-    expect(fetch).toHaveBeenCalledWith(Endpoints.PRODUCTS);
-    expect(mockMapProducts).toHaveBeenCalledWith(mockProductsAPI);
-    expect(result).toEqual(mapProducts(mockProductsAPI));
   });
 
-  test("should throw an error if the fetch fails", async () => {
-    (fetch as Mock).mockResolvedValue({
-      ok: false,
-      status: 500,
-      statusText: "Internal Server Error",
+  describe("getAllProducts", () => {
+    it("should fetch all products with default params and map them", async () => {
+      const mockResponse = { products: [{ id: 1, title: "Product 1" }] };
+      (fetch as jest.Mock).mockResolvedValue({
+        ok: true,
+        json: async () => mockResponse,
+      });
+      (mapProducts as jest.Mock).mockReturnValue(["Product 1"]);
+
+      const products = await getAllProducts();
+
+      expect(fetch).toHaveBeenCalledWith("https://dummyjson.com/products?limit=30&skip=0");
+      expect(mapProducts).toHaveBeenCalledWith(mockResponse);
+      expect(products).toEqual(["Product 1"]);
     });
 
-    const consoleErrorSpy = vi
-      .spyOn(console, "error")
-      .mockImplementation(() => {});
+    it("should handle errors and log them for failed product fetch", async () => {
+      const consoleErrorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+      (fetch as jest.Mock).mockResolvedValue({
+        ok: false,
+        status: 500,
+        statusText: "Internal Server Error",
+      });
 
-    const result = await getAllProducts();
+      const products = await getAllProducts();
 
-    expect(consoleErrorSpy).toHaveBeenCalledWith(
-      Errormessages.ERROR_GETTING_PRODUCTS,
-      expect.any(Error)
-    );
-    expect(result).toBeUndefined();
-    consoleErrorSpy.mockRestore();
+      expect(products).toBeUndefined();
+      expect(consoleErrorSpy).toHaveBeenCalledWith(
+        Errormessages.ERROR_GETTING_PRODUCTS,
+        expect.any(Error)
+      );
+      consoleErrorSpy.mockRestore();
+    });
+  });
+
+  describe("getProductsByCategory", () => {
+    it("should fetch products by category and map them", async () => {
+      const mockResponse = { products: [{ id: 1, title: "Product in Category" }] };
+      const category = "electronics";
+      (fetch as jest.Mock).mockResolvedValue({
+        ok: true,
+        json: async () => mockResponse,
+      });
+      (mapProducts as jest.Mock).mockReturnValue(["Product in Category"]);
+
+      const products = await getProductsByCategory(category);
+
+      expect(fetch).toHaveBeenCalledWith(`https://dummyjson.com/products/category/electronics`); 
+      expect(mapProducts).toHaveBeenCalledWith(mockResponse);
+      expect(products).toEqual(["Product in Category"]);
+    });
+
+    it("should return undefined if category is 'all'", async () => {
+      const products = await getProductsByCategory("all");
+
+      expect(fetch).not.toHaveBeenCalled();
+      expect(products).toBeUndefined();
+    });
+
+    it("should handle errors and log them for failed fetch by category", async () => {
+      const consoleErrorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+      const category = "invalid-category";
+      (fetch as jest.Mock).mockResolvedValue({
+        ok: false,
+        status: 404,
+        statusText: "Not Found",
+      });
+
+      const products = await getProductsByCategory(category);
+
+      expect(products).toBeUndefined();
+      expect(consoleErrorSpy).toHaveBeenCalledWith(
+        Errormessages.ERROR_GETTING_PRODUCTS,
+        expect.any(Error)
+      );
+      consoleErrorSpy.mockRestore();
+    });
   });
 });

@@ -7,7 +7,7 @@ export const filterProducts = (
 ) : Product[] => {
 
   let filtered = products;
-  // window.scrollTo(0, 0);
+  
   if(category && category !== "all"){
     filtered = filtered.filter((product) => product.category === category);
   }

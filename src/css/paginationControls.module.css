@@ -46,6 +46,13 @@
   margin: 2rem;
 }
 
+.range span {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-inline: 0.5rem;
+  color: var(--secondary-color);
+}
+
 
 @media (max-width: 768px) {
   .range {

@@ -3,7 +3,7 @@ import {
   decreaseQuantity,
   increaseQuantity,
   removeItemFromCart,
-} from "../helpers/cartHelpers";
+} from "../utils/cartHelpers";
 import { type AppAction } from "../types/interfaces/actions.interface";
 import { type InitialState } from "../types/interfaces/initialState.interface";
 

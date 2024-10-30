@@ -33,6 +33,8 @@ export const getAllProducts = async (limit = 30, skip = 0 ) => {
       throw new Error(`Error: ${res.status} ${res.statusText}`);
     }
     const data: ProductsAPI = await res.json();
+    console.log(mapProducts(data));
+    
     return mapProducts(data);
   } catch (error) {
     console.error(Errormessages.ERROR_GETTING_PRODUCTS, error);

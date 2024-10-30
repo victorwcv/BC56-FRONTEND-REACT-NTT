@@ -6,7 +6,7 @@ import { saveLocalStore } from "../utils/localStore";
 import { REFRESHTOKEN, TOKEN } from "../constants/storage";
 
 // Call to authenticate user
-export const loginUser = async (data: LoginUser): Promise<User | null> => {
+export const loginUser = async (data: LoginUser): Promise<User | undefined> => {
   const fetchConfig = {
     method: "POST",
     headers: {
@@ -26,12 +26,14 @@ export const loginUser = async (data: LoginUser): Promise<User | null> => {
     saveLocalStore(REFRESHTOKEN, refreshToken);
     return userMapper(user);
   } catch (error) {
-    throw error;
+    console.error(error);
   }
 };
 
-export const authenticateUser = async (token: string): Promise<User | null> => {
-  if (!token) return null;
+export const authenticateUser = async (
+  token: string
+): Promise<User | undefined> => {
+  if (!token) return;
 
   const fetchConfig = {
     headers: {
@@ -47,14 +49,14 @@ export const authenticateUser = async (token: string): Promise<User | null> => {
     const user: UserAPI = await res.json();
     return userMapper(user);
   } catch (error) {
-    throw error;
+    console.error(error);
   }
 };
 
 export const refreshTokenAuth = async (
   refreshToken: string
-) => {
-  if (!refreshToken) return null;
+): Promise<{ accessToken: string; refreshToken: string } | undefined> => {
+  if (!refreshToken) return;
 
   const fetchConfig = {
     method: "POST",
@@ -75,6 +77,6 @@ export const refreshTokenAuth = async (
     saveLocalStore(REFRESHTOKEN, refreshToken);
     return newTokens;
   } catch (error) {
-    throw error;
+    console.error(error);
   }
 };

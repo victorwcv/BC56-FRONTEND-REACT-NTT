@@ -30,7 +30,7 @@ const PaginationControls: React.FC<Props> = ({
     >
       1
     </button>
-  
+    <span>...</span>
     {/* range of buttons */}
     {Array.from({ length: pageCount }, (_, index) => index + 1)
       .slice(
@@ -48,6 +48,8 @@ const PaginationControls: React.FC<Props> = ({
         </button>
       ))}
   
+    <span>...</span>
+    
     {/* last page button */}
     <button
       onClick={() => onPageChange(pageCount)}
