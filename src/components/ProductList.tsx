@@ -14,7 +14,7 @@ const ProductList: React.FC<Props> = ({
   errorMessage,
 }) => {
   return (
-    <section id="products" className={styles.products}>
+    <section id="products" className={styles.products} >
       {products.length > 0 ? (
         products.map((product) => (
           <ProductCard

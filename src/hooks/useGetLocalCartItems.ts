@@ -9,7 +9,6 @@ export const useGetLocalCartItems = () => {
   } = useAppState();
 
   useEffect(() => {
-    console.log("Fetching local cart items...");
     const localCartItems = getLocalStore("cartItems");
     
     if (localCartItems) {
@@ -19,7 +18,7 @@ export const useGetLocalCartItems = () => {
         dispatch({ type: "SET_CART_ITEMS", payload: parsedCartItems });
       }
     }
-  }, []);
+  }, [ dispatch ]);
 
   useEffect(() => {
     saveLocalStore("cartItems", JSON.stringify(cartItems));

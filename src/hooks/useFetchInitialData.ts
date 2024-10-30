@@ -6,7 +6,6 @@ export const useFetchInitialData = () => {
   const { dispatch } = useAppState();
 
   useEffect(() => {
-    console.log("Fetching products...");
 
     const fetchProducts = async () => {
       dispatch({ type: "FETCH_PRODUCTS_START" });
@@ -22,7 +21,6 @@ export const useFetchInitialData = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log("Fetching categories...");
     const fetchCategories = async () => {
       dispatch({ type: "FETCH_CATEGORIES_START" });
       try {

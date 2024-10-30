@@ -3,7 +3,7 @@ import LoginForm from "./components/LoginForm";
 
 const LoginPage = () => {
   return (
-    <div className={styles.loginPage}>
+    <div className={styles.loginPage} data-testid="login-page">
       <picture className={styles.loginPage__picture}>
         <img
         src="/images/shopping-app.svg"

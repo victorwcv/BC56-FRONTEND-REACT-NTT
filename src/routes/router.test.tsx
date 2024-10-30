@@ -1,12 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { RouterProvider } from "react-router-dom";
+import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import { router } from "./router";
-import { createMemoryRouter } from "react-router-dom";
-import { AppContextProvider } from "../context/AppContextProvider";
+import { AppContextProvider } from "../context/AppContextProvider"; 
 import "@testing-library/jest-dom";
 
 describe("Router Tests", () => {
-  test("should render Market component on '/' route", () => {
+  it("should render LoginPage on '/' route", () => {
     const testRouter = createMemoryRouter(router.routes, {
       initialEntries: ["/"],
     });
@@ -17,24 +16,10 @@ describe("Router Tests", () => {
       </AppContextProvider>
     );
 
-    expect(screen.getByTestId("market")).toBeInTheDocument();
+    expect(screen.getByTestId("login-page")).toBeInTheDocument();
   });
 
-  test("should render Market component on '/order-summary' route", () => {
-    const testRouter = createMemoryRouter(router.routes, {
-      initialEntries: ["/order-summary"],
-    });
-
-    render(
-      <AppContextProvider>
-        <RouterProvider router={testRouter} />
-      </AppContextProvider>
-    );
-
-    expect(screen.getByTestId("order-summary")).toBeInTheDocument();
-  });
-
-  test("should render ErrorPage for unknown route", () => {
+  it("should rendirect to login page on unknown route", () => {
     const testRouter = createMemoryRouter(router.routes, {
       initialEntries: ["/unknown-route"],
     });
@@ -45,6 +30,8 @@ describe("Router Tests", () => {
       </AppContextProvider>
     );
 
-    expect(screen.getByTestId("error-page")).toBeInTheDocument();
+    expect(screen.getByTestId("login-page")).toBeInTheDocument();
   });
+
+
 });

@@ -22,9 +22,9 @@ const ForgotPass: React.FC<Props> = ({ onClose }) => {
     },
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = (data: unknown) => {
     setShowModal(true);
+    console.log(data);
   };
 
   const handleAlert = () => {

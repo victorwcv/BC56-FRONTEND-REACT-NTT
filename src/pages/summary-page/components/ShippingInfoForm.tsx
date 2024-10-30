@@ -58,10 +58,6 @@ function ShippingInfoForm() {
   const handleAlert = () => {
     setShowModal(false);
     dispatch({ type: "CLEAR_CART" });
-    dispatch({
-      type: "FILTER_PRODUCTS",
-      payload: { category: "all", searchTerm: "" },
-    });
     navigate("/market");
   };
 

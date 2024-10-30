@@ -5,8 +5,7 @@ import {
   increaseQuantity,
   decreaseQuantity,
   removeItemFromCart,
-} from "../helpers/cartHelpers";
-import { filterProducts } from "../utils/filterProducts";
+} from "../utils/cartHelpers";
 import { type AppAction } from "../types/interfaces/actions.interface";
 
 // mocks
@@ -165,28 +164,19 @@ describe("Testing appReducer, the reducer function in the context of the app", (
     expect(newState.cartItems).toEqual([]);
   });
 
-  it("should handle FILTER_PRODUCTS action", () => {
-    const action = {
-      type: "FILTER_PRODUCTS",
-      payload: { category: "beauty", searchTerm: "lipstick" },
+  it("should handle SET_FILTER_PRODUCTS action", () => {
+    const action: AppAction = {
+      type: "SET_FILTER_PRODUCTS",
+      payload: mockProducts,
     };
 
     const initialStateWithProducts = {
       ...initialState,
-      products: mockProducts,
     };
 
-    const expectedFilteredProducts = filterProducts(
-      initialStateWithProducts.products,
-      action.payload.category,
-      action.payload.searchTerm
-    );
+    const newState = appReducer(initialStateWithProducts, action);      
 
-    const newState = appReducer(initialStateWithProducts, action as AppAction);
-
-    expect(newState.filteredProducts).toEqual(expectedFilteredProducts);
-    expect(newState.selectedCategory).toBe("beauty");
-    expect(newState.searchTerm).toBe("lipstick");
+    expect(newState.filteredProducts).toEqual(mockProducts);
   });
 
   it("should return the initial state", () => {

@@ -16,7 +16,7 @@ export const getCategories = async () => {
   try {
     const res = await fetch(URL_CATEGORIES);
     if (!res.ok) {
-      throw new Error(`Error: ${res.status} ${res.statusText}`);
+      throw new Error(`Error: Failed to get categories`);
     }
     const data: CategoryAPI[] = await res.json();
     return mapCategories(data);
@@ -30,10 +30,9 @@ export const getAllProducts = async (limit = 30, skip = 0 ) => {
   try {
     const res = await fetch(`${URL_PRODUCTS}?limit=${limit}&skip=${skip}`);
     if (!res.ok) {
-      throw new Error(`Error: ${res.status} ${res.statusText}`);
+      throw new Error(`Error: Failed to get products`);
     }
     const data: ProductsAPI = await res.json();
-    console.log(mapProducts(data));
     
     return mapProducts(data);
   } catch (error) {
@@ -47,7 +46,7 @@ export const getProductsByCategory = async (category: string) => {
   try {
     const res = await fetch(`${URL_PRODUCTS}/category/${category}`);
     if (!res.ok) {
-      throw new Error(`Error: ${res.status} ${res.statusText}`);
+      throw new Error(`Error: Failed to get products`);
     }
     const data: ProductsAPI = await res.json();
     return mapProducts(data);
