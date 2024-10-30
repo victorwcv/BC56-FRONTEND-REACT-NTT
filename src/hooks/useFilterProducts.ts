@@ -22,16 +22,12 @@ export const useFilterProducts = ({
   dispatch,
 }: UseFilterProductsProps): useFilterReturn => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [currentCategory, setCurrentCategory] = useState<string>(
-    searchParams.get("category") || "all"
-  );
-  const [currentSearchTerm, setCurrentSearchTerm] = useState<string>(
-    searchParams.get("search") || ""
-  );
+  
+  const currentCategory = searchParams.get("category") || "all";
+  const currentSearchTerm = searchParams.get("search") || "";
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const searchCategory = e.target.value;
-    setCurrentCategory(searchCategory);
     setSearchParams({
       category: searchCategory,
       search: currentSearchTerm || "",
@@ -42,7 +38,6 @@ export const useFilterProducts = ({
 
   const handleSearchTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
-    setCurrentSearchTerm(searchTerm);
     setSearchParams({
       category: currentCategory || "all",
       search: searchTerm,
@@ -52,11 +47,7 @@ export const useFilterProducts = ({
   };
 
   useEffect(() => {
-    const localResults = filterProducts(
-      products,
-      currentCategory,
-      currentSearchTerm
-    );
+    const localResults = filterProducts(products, currentCategory, currentSearchTerm);
 
     if (localResults.length > 0) {
       dispatch({
@@ -75,11 +66,10 @@ export const useFilterProducts = ({
         } catch (error) {
           console.error(error);
         }
-      }
+      };
 
       fetchProductsByCategory();
     }
-
   }, [currentCategory, currentSearchTerm, dispatch, products]);
 
   return {
