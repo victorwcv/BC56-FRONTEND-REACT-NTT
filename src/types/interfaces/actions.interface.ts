@@ -1,6 +1,5 @@
 import { Category } from "./category.interface";
 import { CartItem, Product } from "./product.interface";
-import { CatSlug } from "./api.interface";
 import { User } from "./user.interface";
 
 // fetch categories actions
@@ -68,7 +67,7 @@ export interface FetchProductsErrorAction {
 export interface FilterProductsAction {
   type: "FILTER_PRODUCTS";
   payload: {
-    category: CatSlug;
+    category: string;
     searchTerm: string;
   };
 }

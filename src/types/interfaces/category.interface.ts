@@ -1,9 +1,8 @@
-import { CatSlug } from "./api.interface";
 
 // Frontend category interface
 
 export interface Category {
-  slug: string | CatSlug;
+  slug: string ;
   name: string;
   url: string;
 }

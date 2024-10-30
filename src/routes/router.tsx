@@ -1,11 +1,10 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import App from "../App";
-import Market from "../pages/market/Market";
-import OrderSummary from "../pages/orderSummary/OrderSummary";
 import ErrorPage from "../components/ErrorPage";
 import LoginPage from "../pages/login-page/LoginPage";
 import PrivateRoute from "../routes/PrivateRoute";
-import Products from "../pages/market/components/Products";
+import Products from "../pages/products-page/Products";
+import OrderSummary from "../pages/summary-page/OrderSummary";
 
 export const router = createBrowserRouter([
   {
@@ -14,7 +13,11 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "",
+        index: true,
+        element: <Navigate to="/login" replace />,
+      },
+      {
+        path: "login",
         element: <LoginPage />,
       },
       {
@@ -22,20 +25,22 @@ export const router = createBrowserRouter([
         element: <PrivateRoute />,
         children: [
           {
-            path: "",
-            element: <Market />,
-            children: [
-              {
-                path: "",
-                element: <Products />,
-              },
-              {
-                path: "order-summary",
-                element: <OrderSummary />,
-              },
-            ],
+            index: true,
+            element: <Navigate to="/market/products" replace />,
+          },
+          {
+            path: "products",
+            element: <Products />,
+          },
+          {
+            path: "order-summary",
+            element: <OrderSummary />,
           },
         ],
+      },
+      {
+        path: "*",
+        element: <Navigate to="/login" replace />,
       },
     ],
   },

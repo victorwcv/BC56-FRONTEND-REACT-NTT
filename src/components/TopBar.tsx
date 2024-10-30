@@ -12,7 +12,7 @@ const TopBar: React.FC<Props> = ({ cartItemsLength, username = "Usuario", handle
     <header className={styles.topbar} data-testid="topbar">
       <div className={styles.topbar__container}>
 
-        <Link to="/market" className={styles.topbar__logo} title="Ir a inicio">
+        <Link to="/market/products" className={styles.topbar__logo} title="Ir a inicio">
           <img src="/images/market.png" alt="Logotipo de My Market" />
           <h1>My Market</h1>
         </Link>

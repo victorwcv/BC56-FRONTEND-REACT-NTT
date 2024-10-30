@@ -29,7 +29,7 @@ const LoginForm = () => {
       setError("");
       const res = await loginUser(data);
       dispatch({ type: "SET_USER", payload: res });
-      navigate("/market");
+      navigate("/market/products");
     } catch (error) {
       console.error(error);
       setError("Error al iniciar sesión");

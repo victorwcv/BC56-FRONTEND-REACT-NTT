@@ -18,8 +18,6 @@ export const initialState: InitialState = {
   categories: [],
   products: [],
   filteredProducts: [],
-  selectedCategory: "all",
-  searchTerm: "",
   cartItems: [],
   currentPage: 1,
   isLoading: false,
@@ -115,8 +113,6 @@ export const appReducer = (
       return {
         ...state,
         filteredProducts: filterProducts(state.products, category, searchTerm),
-        selectedCategory: category,
-        searchTerm: searchTerm,
       };
     }
 
