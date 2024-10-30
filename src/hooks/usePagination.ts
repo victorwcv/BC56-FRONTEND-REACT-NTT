@@ -36,6 +36,8 @@ export const usePagination = ({
       ...Object.fromEntries(searchParams),
       page: page.toString(),
     });
+
+    window.scrollTo(0, 0);
   };
 
   useEffect(() => {
@@ -48,7 +50,5 @@ export const usePagination = ({
     pageCount,
     productsToDisplay,
     handlePageChange,
-  }
-  
+  };
 };
-

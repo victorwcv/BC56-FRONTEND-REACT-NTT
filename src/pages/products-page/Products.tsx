@@ -16,7 +16,7 @@ import { CommonMessages } from "../../types/enums/commonMessages.enum";
 import placeholderIMG from "../../assets/no-image-placeholder.jpg";
 
 // constants
-const ITEMS_PER_PAGE = 6;
+const ITEMS_PER_PAGE = 12;
 
 // Products component
 

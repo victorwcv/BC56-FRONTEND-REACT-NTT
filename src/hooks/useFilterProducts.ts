@@ -37,6 +37,7 @@ export const useFilterProducts = ({
       search: currentSearchTerm || "",
       page: "1",
     });
+    window.scrollTo(0, 0);
   };
 
   const handleSearchTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,6 +48,7 @@ export const useFilterProducts = ({
       search: searchTerm,
       page: "1",
     });
+    window.scrollTo(0, 0);
   };
 
   useEffect(() => {
