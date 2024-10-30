@@ -43,11 +43,13 @@ const LoginForm = () => {
       )}
 
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        
         <div className={styles.field__container}>
           <label htmlFor="email" className={styles.field__label}>
             Nombre de usuario
           </label>
           <input
+            id="email"
             type="text"
             placeholder="Ej: user@example.com"
             {...register("username", {
@@ -62,6 +64,7 @@ const LoginForm = () => {
             Contraseña
           </label>
           <input
+            id="password"
             type="password"
             {...register("password", { required: "Ingrese una contraseña" })}
             className={styles.field__input}

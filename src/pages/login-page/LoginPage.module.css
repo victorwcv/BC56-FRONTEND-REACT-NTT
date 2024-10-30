@@ -6,6 +6,34 @@
   justify-content: center;
   height: 100vh;
   min-height: fit-content;
+  overflow: hidden;
+}
+
+.loginPage__picture {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 130%;
+  height: 100%;
+  z-index: -1;
+}
+
+.loginPage__picture img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  right: 0;
+  top: 0;
+  opacity: .2;
+}
+
+.loginPage__logo {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 4rem;
+  height: auto;
 }
 
 .loginPage__container {

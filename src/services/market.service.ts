@@ -26,9 +26,9 @@ export const getCategories = async () => {
 };
 
 // Call to get products
-export const getAllProducts = async () => {
+export const getAllProducts = async (limit = 30, skip = 0 ) => {
   try {
-    const res = await fetch(URL_PRODUCTS);
+    const res = await fetch(`${URL_PRODUCTS}?limit=${limit}&skip=${skip}`);
     if (!res.ok) {
       throw new Error(`Error: ${res.status} ${res.statusText}`);
     }

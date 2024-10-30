@@ -2,15 +2,13 @@ import { useState } from "react";
 import { type Product } from "../types/interfaces/product.interface";
 import styles from "../css/productCard.module.css";
 
-interface ProductCardProps {
+interface Props {
   product: Product;
   onAddToCart: (product: Product, quantity: number) => void;
-  placeholderIMG?: string
 }
 
-function ProductCard({ product, onAddToCart, placeholderIMG }: ProductCardProps) {
+const ProductCard: React.FC<Props> = ({ product, onAddToCart }) => {
   const [quantity, setQuantity] = useState<string>("1");
-  const imgSrc = product.image || placeholderIMG
 
   const handleQuantityChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -30,7 +28,11 @@ function ProductCard({ product, onAddToCart, placeholderIMG }: ProductCardProps)
   return (
     <figure className={styles.product}>
       <div className={styles.product__imageContainer}>
-        <img src={imgSrc} alt="eggs" className={styles.product__image} />
+        <img
+          src={product.image}
+          alt={product.title}
+          className={styles.product__image}
+        />
       </div>
       <figcaption className={styles.product__description}>
         <h2>{product.title}</h2>
@@ -59,6 +61,7 @@ function ProductCard({ product, onAddToCart, placeholderIMG }: ProductCardProps)
             </button>
             <input
               type="text"
+              name="quantity-input"
               value={quantity}
               onChange={handleQuantityChange}
               onBlur={handleBlur}
@@ -94,6 +97,6 @@ function ProductCard({ product, onAddToCart, placeholderIMG }: ProductCardProps)
       </figcaption>
     </figure>
   );
-}
+};
 
 export default ProductCard;

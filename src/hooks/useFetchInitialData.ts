@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useAppState } from "./useAppState";
 import { getAllProducts, getCategories } from "../services/market.service";
 
-export const useFetchAppData = () => {
+export const useFetchInitialData = () => {
   const { dispatch } = useAppState();
 
   useEffect(() => {
@@ -11,7 +11,7 @@ export const useFetchAppData = () => {
     const fetchProducts = async () => {
       dispatch({ type: "FETCH_PRODUCTS_START" });
       try {
-        const products = await getAllProducts();
+        const products = await getAllProducts(0, 0);
         if (!products) return;
         dispatch({ type: "FETCH_PRODUCTS_SUCCESS", payload: products });
       } catch (error) {

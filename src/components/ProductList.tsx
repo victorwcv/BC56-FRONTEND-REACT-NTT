@@ -5,14 +5,12 @@ import styles from "../css/productList.module.css";
 interface Props {
   products: Product[];
   onAddToCart: (product: Product, quantity: number) => void;
-  placeholderIMG: string;
   errorMessage: string;
 }
 
 const ProductList: React.FC<Props> = ({
   products,
   onAddToCart,
-  placeholderIMG,
   errorMessage,
 }) => {
   return (
@@ -23,7 +21,6 @@ const ProductList: React.FC<Props> = ({
             key={product.id}
             product={product}
             onAddToCart={onAddToCart}
-            placeholderIMG={placeholderIMG}
           />
         ))
       ) : (

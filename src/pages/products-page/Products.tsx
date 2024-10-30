@@ -12,11 +12,9 @@ import PaginationControls from "../../components/PaginationControls";
 import { type Product } from "../../types/interfaces/product.interface";
 import { CommonMessages } from "../../types/enums/commonMessages.enum";
 
-// assets
-import placeholderIMG from "../../assets/no-image-placeholder.jpg";
 
 // constants
-const ITEMS_PER_PAGE = 12;
+const ITEMS_PER_PAGE = 6;
 
 // Products component
 
@@ -63,7 +61,6 @@ const Products = () => {
       <ProductList
         products={productsToDisplay}
         onAddToCart={handleAddToCart}
-        placeholderIMG={placeholderIMG}
         errorMessage={errorMesage}
       />
 

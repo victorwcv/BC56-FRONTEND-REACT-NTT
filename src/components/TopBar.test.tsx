@@ -7,7 +7,7 @@ describe("Testing TopBar component", () => {
   test("should render TopBar component", () => {
     const { container } = render(
       <MemoryRouter>
-        <TopBar cartItemsLength={0} />
+        <TopBar cartItemsLength={0} handleLogout={() => {}}/>
       </MemoryRouter>
     );
     expect(container).toMatchSnapshot();

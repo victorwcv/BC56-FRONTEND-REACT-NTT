@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { AppAction } from "../types/interfaces/actions.interface";
 import { filterProducts } from "../utils/filterProducts";
@@ -22,7 +22,7 @@ export const useFilterProducts = ({
   dispatch,
 }: UseFilterProductsProps): useFilterReturn => {
   const [searchParams, setSearchParams] = useSearchParams();
-  
+
   const currentCategory = searchParams.get("category") || "all";
   const currentSearchTerm = searchParams.get("search") || "";
 
@@ -47,7 +47,11 @@ export const useFilterProducts = ({
   };
 
   useEffect(() => {
-    const localResults = filterProducts(products, currentCategory, currentSearchTerm);
+    const localResults = filterProducts(
+      products,
+      currentCategory,
+      currentSearchTerm
+    );
 
     if (localResults.length > 0) {
       dispatch({

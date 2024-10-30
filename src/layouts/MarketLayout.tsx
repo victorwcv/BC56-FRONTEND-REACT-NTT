@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAppState } from "../hooks/useAppState";
-import { useFetchAppData } from "../hooks/useFetchAppData";
+import { useFetchInitialData } from "../hooks/useFetchInitialData";
 import { useGetLocalCartItems } from "../hooks/useGetLocalCartItems";
 import { clearLocalStore } from "../utils/localStore";
 import TopBar from "../components/TopBar";
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const MarketLayout: React.FC<Props> = ({ children }) => {
-  useFetchAppData();
+  useFetchInitialData();
   useGetLocalCartItems();
   const {
     state: {
