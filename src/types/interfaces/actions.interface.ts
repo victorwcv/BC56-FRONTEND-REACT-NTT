@@ -64,12 +64,9 @@ export interface FetchProductsErrorAction {
 }
 
 // filter actions
-export interface FilterProductsAction {
-  type: "FILTER_PRODUCTS";
-  payload: {
-    category: string;
-    searchTerm: string;
-  };
+export interface SetFilterProductsAction {
+  type: "SET_FILTER_PRODUCTS";
+  payload: Product[];
 }
 
 // auth actions
@@ -105,7 +102,7 @@ export type AppAction =
   | FetchProductsStartAction
   | FetchProductsSuccessAction
   | FetchProductsErrorAction
-  | FilterProductsAction
+  | SetFilterProductsAction
   | SetUserAction
   | SetUserStartAction
   | SetUserErrorAction

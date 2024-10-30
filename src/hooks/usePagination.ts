@@ -2,22 +2,22 @@ import { useEffect, useState } from "react";
 import { Product } from "../types/interfaces/product.interface";
 import { useSearchParams } from "react-router-dom";
 
-interface PaginationOptions {
+interface usePaginationProps {
   itemsPerPage: number;
   products: Product[];
 }
 
-interface PaginationReturn {
+interface usePaginationReturn {
   currentPage: number;
   pageCount: number;
-  displayedProducts: Product[];
+  productsToDisplay: Product[];
   handlePageChange: (page: number) => void;
 }
 
-const usePagination = ({
+export const usePagination = ({
   itemsPerPage,
   products,
-}: PaginationOptions): PaginationReturn => {
+}: usePaginationProps): usePaginationReturn => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState<number>(
     Number(searchParams.get("page")) || 1
@@ -25,7 +25,7 @@ const usePagination = ({
 
   const pageCount = Math.ceil(products.length / itemsPerPage);
 
-  const displayedProducts = products.slice(
+  const productsToDisplay = products.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -46,10 +46,9 @@ const usePagination = ({
   return {
     currentPage,
     pageCount,
-    displayedProducts,
+    productsToDisplay,
     handlePageChange,
   }
   
 };
 
-export default usePagination;

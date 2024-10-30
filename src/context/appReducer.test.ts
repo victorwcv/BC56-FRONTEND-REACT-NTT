@@ -6,7 +6,7 @@ import {
   decreaseQuantity,
   removeItemFromCart,
 } from "../helpers/cartHelpers";
-import { filterProducts } from "../helpers/filterProductsHelpers";
+import { filterProducts } from "../utils/filterProducts";
 import { type AppAction } from "../types/interfaces/actions.interface";
 
 // mocks

@@ -4,7 +4,6 @@ import {
   increaseQuantity,
   removeItemFromCart,
 } from "../helpers/cartHelpers";
-import { filterProducts } from "../helpers/filterProductsHelpers";
 import { type AppAction } from "../types/interfaces/actions.interface";
 import { type InitialState } from "../types/interfaces/initialState.interface";
 
@@ -58,7 +57,7 @@ export const appReducer = (
     case "FETCH_PRODUCTS_SUCCESS":
       return {
         ...state,
-        products: action.payload,
+        products: [...state.products, ...action.payload],
         isLoading: false,
       };
     case "FETCH_PRODUCTS_ERROR":
@@ -106,12 +105,11 @@ export const appReducer = (
       };
 
     // filter products actions
-    case "FILTER_PRODUCTS": {
-      const { searchTerm, category } = action.payload;
+    case "SET_FILTER_PRODUCTS": {
 
       return {
         ...state,
-        filteredProducts: filterProducts(state.products, category, searchTerm),
+        filteredProducts: action.payload,
       };
     }
 

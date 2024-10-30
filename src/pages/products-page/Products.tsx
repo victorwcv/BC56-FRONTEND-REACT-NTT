@@ -1,8 +1,7 @@
 // hooks
-import { useSearchParams } from "react-router-dom";
-import { useEffect } from "react";
 import { useAppState } from "../../hooks/useAppState";
-import usePagination from "../../hooks/usePagination";
+import { usePagination } from "../../hooks/usePagination";
+import { useFilterProducts } from "../../hooks/useFilterProducts";
 
 // components
 import SearchBar from "../../components/SearchBar";
@@ -19,23 +18,29 @@ import placeholderIMG from "../../assets/no-image-placeholder.jpg";
 // constants
 const ITEMS_PER_PAGE = 6;
 
-
 // Products component
 
 const Products = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const categoryFromParams = searchParams.get("category") || "all";
-  const searchTermFromParams = searchParams.get("search") || "";
-
   const {
     dispatch,
-    state: { filteredProducts, categories },
+    state: { products, filteredProducts, categories },
   } = useAppState();
 
   const errorMesage = CommonMessages.NO_PRODUCTS;
 
-  const { currentPage, displayedProducts, pageCount, handlePageChange } =
-    usePagination({ itemsPerPage: ITEMS_PER_PAGE, products: filteredProducts });
+  const {
+    currentCategory,
+    currentSearchTerm,
+    handleCategoryChange,
+    handleSearchTermChange,
+  } = useFilterProducts({ dispatch, products });
+
+  const { 
+    currentPage, 
+    productsToDisplay, 
+    pageCount, 
+    handlePageChange 
+  } = usePagination({ itemsPerPage: ITEMS_PER_PAGE, products: filteredProducts });
 
   const handleAddToCart = (product: Product, quantity: number): void => {
     if (quantity <= 0) return;
@@ -45,50 +50,18 @@ const Products = () => {
     });
   };
 
-  const handleChangeCategory = (
-    e: React.ChangeEvent<HTMLSelectElement>
-  ): void => {
-    const category = e.target.value;
-    setSearchParams({
-      page: "1",
-      category,
-      search: searchParams.get("search") || "",
-    });
-  };
-
-  const handleChangeTerm = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const term = e.target.value;
-    setSearchParams({
-      page: "1",
-      category: searchParams.get("category") || "all",
-      search: term,
-    });
-  };
-
-  useEffect(() => {
-    console.log("Searching for products...");
-
-    dispatch({
-      type: "FILTER_PRODUCTS",
-      payload: {
-        category: categoryFromParams,
-        searchTerm: searchTermFromParams,
-      },
-    });
-  }, [categoryFromParams, searchTermFromParams, dispatch]);
-
   return (
     <>
       <SearchBar
         categories={categories}
-        onChangeTerm={handleChangeTerm}
-        onChangeCategory={handleChangeCategory}
-        currentTerm={searchTermFromParams}
-        currentCategory={categoryFromParams}
+        onChangeTerm={handleSearchTermChange}
+        onChangeCategory={handleCategoryChange}
+        currentTerm={currentSearchTerm}
+        currentCategory={currentCategory}
       />
 
       <ProductList
-        products={displayedProducts}
+        products={productsToDisplay}
         onAddToCart={handleAddToCart}
         placeholderIMG={placeholderIMG}
         errorMessage={errorMesage}
@@ -99,7 +72,6 @@ const Products = () => {
         pageCount={pageCount}
         onPageChange={handlePageChange}
       />
-      
     </>
   );
 };

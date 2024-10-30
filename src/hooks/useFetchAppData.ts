@@ -15,15 +15,11 @@ export const useFetchAppData = () => {
         if (!products) return;
         dispatch({ type: "FETCH_PRODUCTS_SUCCESS", payload: products });
       } catch (error) {
-        dispatch({
-          type: "FETCH_PRODUCTS_ERROR",
-          payload: `API Error: ${error}`,
-        });
         console.error(error);
       }
     };
     fetchProducts();
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     console.log("Fetching categories...");
@@ -33,18 +29,10 @@ export const useFetchAppData = () => {
         const categories = await getCategories();
         if (!categories) return;
         dispatch({ type: "FETCH_CATEGORIES_SUCCESS", payload: categories });
-        dispatch({
-          type: "FILTER_PRODUCTS",
-          payload: { category: "all", searchTerm: "" },
-        });
       } catch (error) {
-        dispatch({
-          type: "FETCH_CATEGORIES_ERROR",
-          payload: `API Error: ${error}`,
-        });
         console.error(error);
       }
     };
     fetchCategories();
-  }, []);
+  }, [dispatch]);
 };

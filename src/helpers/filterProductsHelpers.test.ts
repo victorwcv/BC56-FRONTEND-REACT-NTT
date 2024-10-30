@@ -1,5 +1,5 @@
 import { vi } from "vitest";
-import { filterProducts } from "./filterProductsHelpers";
+import { filterProducts } from "../utils/filterProducts";
 import { Product } from "../types/interfaces/product.interface";
 
 describe("filterProducts", () => {
@@ -42,5 +42,4 @@ describe("filterProducts", () => {
     const filteredProducts = filterProducts(products, "all", "table");
     expect(filteredProducts).toEqual([]);
   });
-
 });

@@ -38,3 +38,18 @@ export const getAllProducts = async () => {
     console.error(Errormessages.ERROR_GETTING_PRODUCTS, error);
   }
 };
+
+// Call to get products by category
+export const getProductsByCategory = async (category: string) => {
+  if (category === "all") return;
+  try {
+    const res = await fetch(`${URL_PRODUCTS}/category/${category}`);
+    if (!res.ok) {
+      throw new Error(`Error: ${res.status} ${res.statusText}`);
+    }
+    const data: ProductsAPI = await res.json();
+    return mapProducts(data);
+  } catch (error) {
+    console.error(Errormessages.ERROR_GETTING_PRODUCTS, error);
+  }
+};
