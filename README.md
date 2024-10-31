@@ -41,7 +41,7 @@ Requisito: Tener instalado Node.js v20 LTS
 3. **Cambiar de Rama**:
 
    ```bash
-   git checkout feature/react-implementation
+   git checkout feature/integrative-project
    ```
 
 4. **Instalar dependencias** (Vite necesita dependencias mínimas):
