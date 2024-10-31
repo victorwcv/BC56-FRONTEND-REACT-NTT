@@ -6,7 +6,7 @@ import { saveLocalStore } from "../utils/localStore";
 import { REFRESHTOKEN, TOKEN } from "../constants/storage";
 
 // Call to authenticate user
-export const loginUser = async (data: LoginUser): Promise<User | undefined> => {
+export const loginUser = async (data: LoginUser): Promise<User> => {
   const fetchConfig = {
     method: "POST",
     headers: {
@@ -14,20 +14,17 @@ export const loginUser = async (data: LoginUser): Promise<User | undefined> => {
     },
     body: JSON.stringify(data),
   };
-  try {
-    const res = await fetch(Endpoints.LOGIN, fetchConfig);
-    if (!res.ok) {
-      const error = await res.json();
-      throw new Error(error.message);
-    }
-    const user: UserAPI = await res.json();
-    const { accessToken, refreshToken } = user;
-    saveLocalStore(TOKEN, accessToken);
-    saveLocalStore(REFRESHTOKEN, refreshToken);
-    return userMapper(user);
-  } catch (error) {
-    console.error(error);
+
+  const res = await fetch(Endpoints.LOGIN, fetchConfig);
+  if (!res.ok) {
+    const error = await res.json();
+    throw new Error(error.message || "Error al iniciar sesión");
   }
+  const user: UserAPI = await res.json();
+  const { accessToken, refreshToken } = user;
+  saveLocalStore(TOKEN, accessToken);
+  saveLocalStore(REFRESHTOKEN, refreshToken);
+  return userMapper(user);
 };
 
 export const authenticateUser = async (

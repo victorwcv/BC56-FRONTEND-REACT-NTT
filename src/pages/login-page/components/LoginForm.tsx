@@ -25,14 +25,19 @@ const LoginForm = () => {
   });
 
   const onSubmit = async (data: LoginUser) => {
+    setError("");
     try {
-      setError("");
-      const res = await loginUser(data);
-      dispatch({ type: "SET_USER", payload: res });
+      const user = await loginUser(data);
+      dispatch({ type: "SET_USER", payload: user });
       navigate("/market/products");
-    } catch (error) {
-      console.error(error);
-      setError("Error al iniciar sesión");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error(error.message);
+        setError(error.message);
+      } else {
+        console.error("Error desconocido:" + error);
+        setError("Error desconocido al iniciar sesión");
+      }
     }
   };
 
@@ -43,7 +48,6 @@ const LoginForm = () => {
       )}
 
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        
         <div className={styles.field__container}>
           <label htmlFor="email" className={styles.field__label}>
             Nombre de usuario
