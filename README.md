@@ -1,128 +1,60 @@
-# My Market
+# Fase Final: Proyecto Integrador
 
-<br>
-<!-- ![My Market Banner](ruta/a/tu/banner.png) -->
+<p align=center>
+<img src="./public/images/login.jpg" width=300/>
+<img src="./public/images/market.jpg" width=300/>
+<img src="./public/images/login-phone.png" height=300/>
+</p>
 
-## Descripción
+En esta fase final del bootcamp, se ha completado el desarrollo de la aplicación “My Market” con la implementación de todas las funcionalidades principales.
 
-**My Market** es una plataforma de comercio electrónico desarrollada como proyecto final del bootcamp REACT. Este proyecto implementa un carrito de compras completo, con funcionalidades avanzadas como paginación y autenticación, evolucionando desde **Vanilla JavaScript** hasta **React con TypeScript**. El desarrollo se divide en varias fases, cada una gestionada en una rama específica del repositorio.
+## Cambios Realizados
 
-<br>
+- **Manejo Completo del Estado Global**: Se consolidó `useReducer` junto con `useContext` para el manejo centralizado del estado, permitiendo actualizaciones de datos y control avanzado sobre el flujo de la aplicación, especialmente en la gestión del carrito de compras y el sistema de paginación.
 
-## Tabla de Contenidos
+- **Autenticación de Usuario**: Se implementó la autenticación con tokens y el sistema de actualización automática de estos, con manejo de errores en caso de que el usuario necesite iniciar sesión nuevamente. Esto mejora la seguridad de la aplicación y mantiene la sesión activa sin interrupciones.
 
-- [Descripción](#descripción)
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Documentación por Fase](#documentacion-por-fase)
-- [Fases del Proyecto](#fases-del-proyecto)
-- [Tecnologías Utilizadas](#tecnologías-utilizadas)
-- [Instalación](#instalación)
-- [Licencia](#licencia)
+- **Filtro de Productos y Paginación**: Se optimizaron los filtros de productos por categoría y búsqueda, permitiendo a los usuarios explorar y filtrar productos de forma intuitiva. Además, se implementó paginación dinámica para facilitar la navegación.
 
-<br>
+- **Resumen y Confirmación de Compra**: En la vista de Resumen, los usuarios pueden revisar y modificar el carrito antes de confirmar la compra. El proceso de confirmación permite agregar datos personales, garantizando una experiencia de compra completa y funcional.
 
-## Estructura del Proyecto
+- **Cobertura de Pruebas**: La aplicación incluye pruebas unitarias que abarcan todos los componentes y hooks principales, utilizando Vitest y React Testing Library.
 
-El proyecto está dividido en varias fases, cada una desarrollada en una rama separada para mantener un flujo de trabajo organizado y facilitar el seguimiento del progreso.
 
-<br>
-  
-## Fases del Proyecto
+## Probar proyecto localmente
 
-1. **Diseño y Estilos** (`feature/design-and-styles`)
+Requisito: Tener instalado Node.js v20 LTS
 
-   - Creación del diseño inicial y estilos básicos utilizando CSS.
-
-2. **JavaScript** (`feature/javascript`)
-
-   - Implementación de funcionalidades básicas con Vanilla JavaScript.
-
-3. **TypeScript** (`feature/typescript`)
-
-   - Migración del código JavaScript a TypeScript para mejorar la tipificación y la mantenibilidad.
-
-4. **React Fundamentos** (`feature/react-foundations`)
-
-   - Introducción a React y creación de componentes básicos.
-
-5. **React Implementación** (`feature/react-implementation`)
-
-   - Desarrollo avanzado con React, integración de estados y props.
-
-6. **Pruebas Unitarias** (`feature/unit-tests`)
-
-   - Implementación de pruebas unitarias para asegurar la calidad del código.
-
-7. **Proyecto Integrador** (`feature/integrative-project`)
-   - Integración de todas las funcionalidades para el funcionamiento completo del market, incluyendo paginación, autenticación y más.
-
-<br>
-
-## Documentacion por Fase
-
-Cada fase del proyecto tiene su propio archivo `README.md`, ubicado en la rama correspondiente. Este archivo documenta:
-
-- Las decisiones técnicas tomadas durante esa fase.
-- Los problemas enfrentados y cómo se resolvieron.
-- Instrucciones específicas para probar o entender esa etapa del desarrollo.
-
-Puedes acceder a la documentación detallada de cada fase cambiando de rama:
-
-```bash
-  git checkout feature/nombre-de-la-rama
-```
-
-Por ejemplo, para la fase de React Fundations:
-
-```bash
-  git checkout feature/react-foundations
-```
-
-<br>
-
-## Tecnologías Utilizadas
-
-- **Lenguajes:** JavaScript, TypeScript
-- **Librerías y Frameworks:** React
-- **Herramientas de Estilo:** CSS
-- **Control de Versiones:** Git, GitHub
-- **Pruebas:** Jest (u otra herramienta de pruebas unitarias)
-- **Otros:** Principios SOLID, herramientas de desarrollo modernas
-
-<br>
-
-## Instalación
-
-1. **Clonar el repositorio:**
+1. **Clonar el repositorio**:
 
    ```bash
    git clone https://github.com/victorwcv/BC56-FRONTEND-REACT-NTT.git
+
    ```
 
-2. **Navegar al directorio del proyecto:**
+2. **Navegar a la carpeta del proyecto**:
 
    ```bash
-   cd  BC56-FRONTEND-REACT-NTT
+   cd BC56-FRONTEND-REACT-NTT
    ```
 
-3. **Instalar dependencias**
+3. **Cambiar de Rama**:
 
+   ```bash
+   git checkout feature/react-implementation
+   ```
+
+4. **Instalar dependencias** (Vite necesita dependencias mínimas):
    ```bash
    npm install
    ```
 
-4. **Iniciar el proyecto**
+5. **Correr el proyecto** con Vite:
 
    ```bash
    npm run dev
    ```
 
-5. **Abrir el Navegador en el puerto especificado**
+6. **Abrir el proyecto**
 
-   http://localhost:5173/
-
-<br>
-
-## Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT. Para más detalles, consulta el archivo [LICENSE](./LICENSE).
+   Acceder a la URL proporcionada por Vite (generalmente http://localhost:5173).
